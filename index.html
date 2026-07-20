@@ -3,16 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Hong — Hardware & Electrical Engineering</title>
+<title>Thomas Hong — Hardware &amp; Electrical Engineering</title>
 <meta name="description" content="Thomas Hong. ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
+<!-- Open Graph: makes the link unfurl properly in LinkedIn/recruiter emails.
+     AFTER DEPLOY: replace the two [YOUR-SITE-URL] values with your real GitHub Pages URL,
+     and make sure img/line-monitor.jpg exists (use the MakeOHI/O build photo). -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Thomas Hong — Hardware &amp; Electrical Engineering">
+<meta property="og:description" content="ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
+<meta property="og:url" content="[YOUR-SITE-URL]">
+<meta property="og:image" content="[YOUR-SITE-URL]/img/line-monitor.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <!--
   ─────────────────────────────────────────────────────────────
-  HOW TO EDIT THIS FILE
-  1. Replace every [BRACKETED] placeholder with your real info.
-  2. Photos: put images in an /img folder next to this file, then
+  REMAINING TO-DOS BEFORE DEPLOY
+  1. Photos: put images in an /img folder next to this file, then
      swap each <div class="photo-slot"> for:
      <img class="photo" src="img/yourphoto.jpg" alt="describe it">
-  3. Deploy: see DEPLOY.md in this folder (GitHub Pages, ~10 min).
+  2. Fill the one remaining placeholder: [LINK-TO-YOUR-LINKEDIN-POST]
+     (your MakeOHI/O post URL) in LOG 01.
+  3. Put your resume PDF at resume/Thomas_Hong_Resume.pdf
+     (or change the footer href to match wherever you put it).
+  4. GitHub link is intentionally removed from the footer until the
+     decoder repo exists. Re-add it next to LinkedIn when it's live.
+  5. Update the two [YOUR-SITE-URL] values in the OG tags above.
   ─────────────────────────────────────────────────────────────
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,15 +182,15 @@
       <span>COLUMBUS, OH · US PERSON</span>
     </div>
     <h1>Thomas Hong</h1>
-    <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of 2028</p>
-    <p class="thesis">I build and debug physical systems — <em>PCBs, sensors, and the tools that keep them honest.</em></p>
+    <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of December 2028</p>
+    <p class="thesis">I build and debug physical systems: <em>PCBs, sensors, and the tools that keep them honest.</em></p>
 
     <div class="ratings" aria-label="Selected figures">
       <div class="ratings-title">ABSOLUTE MAXIMUM RATINGS (SELECTED)</div>
       <table>
         <tr><td>Custom systems designed, built &amp; delivered</td><td>200+ units</td></tr>
         <tr><td>Sensor measurements logged, single 24-hr build</td><td>700+ pts</td></tr>
-        <tr><td>Grid assets assessed against operational standards</td><td>70,000+</td></tr>
+        <tr><td>Grid asset database supporting vulnerability assessments</td><td>70,000+ assets</td></tr>
         <tr><td>PCB prototype iterations to formal design review</td><td>5 revs</td></tr>
         <tr><td>Cleanroom contamination incidents, 5+ months</td><td>0</td></tr>
       </table>
@@ -203,33 +217,33 @@
     <article class="log">
       <div class="log-id">LOG 01 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></div>
       <h3>Dynamic Transmission Line Monitor</h3>
-      <p>24-hour makeathon build (MakeOHI/O 2026): a live demonstration of dynamic line rating. Nichrome wire stands in for a conductor; an ESP32 reads contact temperature, ambient conditions, and a time-of-flight LiDAR tracking sag off a weighted target. As the wire heats, it expands — and the system watches it happen.</p>
+      <p>24-hour makeathon build (MakeOHI/O 2026): a live demonstration of dynamic line rating. Nichrome wire stands in for a conductor; an ESP32 reads contact temperature, ambient conditions, and a time-of-flight LiDAR tracking sag off a weighted target. As the wire heats, it expands, and the system watches it happen.</p>
       <p>The hard part was physical: every sensor mount melted off past 50&nbsp;°C until heat-shrink tubing held at 4am. Logged 700+ measurements; analysis matched IEEE&nbsp;738 thermal expansion models within ~5% error, including a forced-convection cooling demo most teams didn't model.</p>
-      <div class="photo-slot">[ ADD PHOTO — the build on the bench. You already have this from your LinkedIn post. ]</div>
+      <div class="photo-slot">[ ADD PHOTO: the build on the bench. You already have this from your LinkedIn post. ]</div>
       <div class="spec"><b>Bench:</b> ESP32 · DS18B20 · ToF LiDAR · CSV pipeline · Python analysis &nbsp;|&nbsp; <a href="[LINK-TO-YOUR-LINKEDIN-POST]">Build photos &amp; write-up →</a></div>
     </article>
 
     <article class="log">
       <div class="log-id">LOG 02 · PRODUCTION TOOL · <span class="status">ADOPTED BY TEAM, DEMOED TO MANAGEMENT</span></div>
       <h3>Asset Data Automation Tool — AEP</h3>
-      <p>Converting raw source logs into risk-analysis-ready data covered only 4 of 10 asset types and took a ~1,000-step manual process. I built a Python application that handles all 10: pick the asset type, select the inventory and source files, and it validates formats, flags mismatches with clear errors, and produces audit-ready, upload-ready CSVs with a processing log. Packaged as a Windows executable so anyone on the team can run it — three clicks, no Python required.</p>
+      <p>Converting raw source logs into risk-analysis-ready data was automated for only 4 of 10 asset types; the other 6 required a ~1,000-step manual process. I built a Python application that handles all 10: pick the asset type, select the inventory and source files, and it validates formats, flags mismatches with clear errors, and produces audit-ready, upload-ready CSVs with a processing log. Packaged as a Windows executable so anyone on the team can run it. Three clicks, no Python required.</p>
       <p><em>Code is employer IP and not public; happy to walk through the architecture in conversation.</em></p>
       <div class="spec"><b>Bench:</b> Python · GUI design · data validation · deployed as .exe</div>
     </article>
 
     <article class="log">
       <div class="log-id">LOG 03 · LONGITUDINAL · <span class="status">EST. 2021, STILL RUNNING</span></div>
-      <h3>Hong Computing — 200+ Custom Systems</h3>
-      <p>A PC building business I started before my first engineering class. Two hundred–plus systems designed, assembled, validated, and delivered — plus the diagnostic work when machines come back broken: power-delivery instability, memory-timing failures, thermal throttling that only shows under sustained load. Custom air and liquid cooling loops for thermally constrained builds, cutting peak CPU/GPU temps 15–25&nbsp;°C.</p>
+      <h3>Hong Computing: 200+ Custom Systems</h3>
+      <p>A PC building business I started before my first engineering class. Over 200 systems designed, assembled, validated, and delivered, plus the diagnostic work when machines come back broken: power-delivery instability, memory-timing failures, thermal throttling that only shows under sustained load. Custom air and liquid cooling loops for thermally constrained builds, cutting peak CPU/GPU temps 15 to 25&nbsp;°C.</p>
       <p>Real customers, real consequences: misdiagnose something and it comes back to me. It's where my troubleshooting instincts come from.</p>
-      <div class="photo-slot">[ ADD PHOTO — your best build, ideally a custom loop mid-assembly. ]</div>
+      <div class="photo-slot">[ ADD PHOTO: your best build, ideally a custom loop mid-assembly. ]</div>
       <div class="spec"><b>Bench:</b> systematic root-cause diagnosis · custom cooling design · component-level validation</div>
     </article>
 
     <article class="log">
       <div class="log-id">LOG 04 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></div>
-      <h3>IgnisKey Hardware Prototype — Boeing-Sponsored Internship</h3>
-      <p>Led a 4-person engineering team through 5 prototype iterations of a PCB-based device, balancing competing thermal and ergonomic constraints and reducing build complexity each revision. Delivered a functional prototype and a formal design review to Boeing engineers on schedule — our trade-off documentation was cited by their engineers as a model for future reviews.</p>
+      <h3>IgnisKey Hardware Prototype · Boeing-Sponsored Internship</h3>
+      <p>Led a 4-person engineering team through 5 prototype iterations of a PCB-based device, balancing competing thermal and ergonomic constraints and reducing build complexity each revision. Delivered a functional prototype and a formal design review to Boeing engineers on schedule. Our trade-off documentation was cited by their engineers as a model for future reviews.</p>
       <div class="spec"><b>Bench:</b> PCB design · prototype iteration · design review · team lead of 4</div>
     </article>
 
@@ -237,7 +251,7 @@
       <div class="log-id">LOG 05 · IN DEVELOPMENT · <span class="status">TARGET: FALL 2026</span></div>
       <h3>FPGA Market-Data Decoder (Verilog)</h3>
       <p>An ITCH-style exchange-feed decoder in Verilog: fixed-format message parser built as a finite state machine, a trigger module that fires on configured instruments, and a self-checking testbench driven by a Python packet generator with randomized corner cases. Success metric: clock cycles from last byte in to valid out.</p>
-      <div class="spec"><b>Bench:</b> Verilog · FSM design · self-checking testbench · Python verification &nbsp;|&nbsp; <b>Status:</b> in development — repo link coming</div>
+      <div class="spec"><b>Bench:</b> Verilog · FSM design · self-checking testbench · Python verification &nbsp;|&nbsp; <b>Status:</b> in development, repo link coming</div>
     </article>
 
   </section>
@@ -245,11 +259,11 @@
   <section id="experience">
     <div class="sec-label">EXPERIENCE</div>
     <div class="xp">
-      <div class="xp-row"><div class="xp-when">2026 — NOW</div><div class="xp-what"><b>American Electric Power</b> — Engineering Intern, Transmission Strategy &amp; Grid. <span>Asset vulnerability assessment across an 11-state grid; identified and led resolution of two production data defects.</span></div></div>
-      <div class="xp-row"><div class="xp-when">FALL 2026</div><div class="xp-what"><b>Marathon Petroleum</b> — Refining Electrical Engineering Co-op (incoming). <span>E&amp;I project engineering, Detroit refinery.</span></div></div>
-      <div class="xp-row"><div class="xp-when">2025 — NOW</div><div class="xp-what"><b>OSU Nanotech West Laboratory</b> — Undergraduate Researcher. <span>Photolithography &amp; wafer processing; standardized process docs, cutting new-researcher onboarding time ~30%.</span></div></div>
-      <div class="xp-row"><div class="xp-when">2025</div><div class="xp-what"><b>Boeing-Sponsored Engineering Internship</b> — Team Lead, IgnisKey. <span>See LOG 04.</span></div></div>
-      <div class="xp-row"><div class="xp-when">2021 — NOW</div><div class="xp-what"><b>Hong Computing</b> — Founder. <span>See LOG 03.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2026 - NOW</div><div class="xp-what"><b>American Electric Power</b> · Engineering Intern, Transmission Strategy &amp; Grid. <span>Asset vulnerability assessment across an 11-state grid; identified and led resolution of two production data defects.</span></div></div>
+      <div class="xp-row"><div class="xp-when">FALL 2026</div><div class="xp-what"><b>Marathon Petroleum</b> · Refining Electrical Engineering Co-op (incoming). <span>E&amp;I project engineering, Detroit refinery.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2025 - NOW</div><div class="xp-what"><b>OSU Nanotech West Laboratory</b> · Undergraduate Researcher. <span>Photolithography &amp; wafer processing; standardized process docs, cutting new-researcher onboarding time ~30%.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2025</div><div class="xp-what"><b>Boeing-Sponsored Engineering Internship</b> · Team Lead, IgnisKey. <span>See LOG 04.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2021 - NOW</div><div class="xp-what"><b>Hong Computing</b> · Founder. <span>See LOG 03.</span></div></div>
     </div>
   </section>
 
@@ -266,7 +280,7 @@
       <li>Soldering &amp; rework</li>
       <li>Photolithography / cleanroom</li>
       <li>Git</li>
-      <li>Verilog (in progress — see LOG 05)</li>
+      <li>Verilog (in progress, see LOG 05)</li>
     </ul>
   </section>
 
@@ -276,9 +290,10 @@
   <div class="wrap">
     <div class="contact">
       <a href="mailto:hong.1258@osu.edu">hong.1258@osu.edu</a>
-      <a href="[YOUR-LINKEDIN-URL]">LinkedIn</a>
-      <a href="[YOUR-GITHUB-URL]">GitHub</a>
-      <a href="[LINK-TO-RESUME-PDF]">Résumé (PDF)</a>
+      <a href="https://www.linkedin.com/in/thomas-hong-ece">LinkedIn</a>
+      <!-- Re-add GitHub here once the decoder repo is live:
+      <a href="https://github.com/YOUR-USERNAME">GitHub</a> -->
+      <a href="resume/Thomas_Hong_Resume.pdf">Résumé (PDF)</a>
     </div>
     <p class="colophon">Hand-built, single file, no framework. Last calibrated July 2026.</p>
   </div>
