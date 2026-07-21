@@ -3,30 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Hong — Hardware &amp; Electrical Engineering</title>
+<title>Thomas Hong · Hardware &amp; Electrical Engineering</title>
 <meta name="description" content="Thomas Hong. ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
 <!-- Open Graph: makes the link unfurl properly in LinkedIn/recruiter emails.
      AFTER DEPLOY: replace the two [YOUR-SITE-URL] values with your real GitHub Pages URL,
      and make sure img/line-monitor.jpg exists (use the MakeOHI/O build photo). -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Thomas Hong — Hardware &amp; Electrical Engineering">
+<meta property="og:title" content="Thomas Hong · Hardware &amp; Electrical Engineering">
 <meta property="og:description" content="ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
 <meta property="og:url" content="[YOUR-SITE-URL]">
 <meta property="og:image" content="[YOUR-SITE-URL]/img/line-monitor.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <!--
   ─────────────────────────────────────────────────────────────
-  REMAINING TO-DOS BEFORE DEPLOY
-  1. Photos: put images in an /img folder next to this file, then
-     swap each <div class="photo-slot"> for:
-     <img class="photo" src="img/yourphoto.jpg" alt="describe it">
-  2. Fill the one remaining placeholder: [LINK-TO-YOUR-LINKEDIN-POST]
-     (your MakeOHI/O post URL) in LOG 01.
-  3. Put your resume PDF at resume/Thomas_Hong_Resume.pdf
-     (or change the footer href to match wherever you put it).
-  4. GitHub link is intentionally removed from the footer until the
-     decoder repo exists. Re-add it next to LinkedIn when it's live.
-  5. Update the two [YOUR-SITE-URL] values in the OG tags above.
+  REMAINING TO-DOS
+  1. Upload img/line-monitor.jpg and img/production-grid.jpg
+     to the img/ folder in the repo (this file expects them).
+  2. Put your resume PDF at resume/Thomas_Hong_Resume.pdf.
+  3. Swap the LOG 01 spec link for your actual MakeOHI/O
+     LinkedIn post URL (currently points at your profile).
+  4. Update the two [YOUR-SITE-URL] values in the OG tags
+     above with your real GitHub Pages URL after deploy.
+  5. Hero custom-loop photo for LOG 03 is a commented-out
+     img tag above the grid; uncomment when you have the shot.
+  6. GitHub link is intentionally out of the footer until the
+     decoder repo exists. Re-add it next to LinkedIn then.
   ─────────────────────────────────────────────────────────────
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,6 +141,10 @@
     padding:34px 16px;text-align:center;
   }
   .photo{width:100%;height:auto;margin:14px 0 6px;border:1px solid var(--grid)}
+  .fig-caption{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;
+    color:var(--muted);margin:2px 0 12px;
+  }
 
   /* ── experience ──────────────────────────────────────── */
   .xp{border-top:1px solid var(--grid)}
@@ -219,13 +224,15 @@
       <h3>Dynamic Transmission Line Monitor</h3>
       <p>24-hour makeathon build (MakeOHI/O 2026): a live demonstration of dynamic line rating. Nichrome wire stands in for a conductor; an ESP32 reads contact temperature, ambient conditions, and a time-of-flight LiDAR tracking sag off a weighted target. As the wire heats, it expands, and the system watches it happen.</p>
       <p>The hard part was physical: every sensor mount melted off past 50&nbsp;°C until heat-shrink tubing held at 4am. Logged 700+ measurements; analysis matched IEEE&nbsp;738 thermal expansion models within ~5% error, including a forced-convection cooling demo most teams didn't model.</p>
-      <div class="photo-slot">[ ADD PHOTO: the build on the bench. You already have this from your LinkedIn post. ]</div>
-      <div class="spec"><b>Bench:</b> ESP32 · DS18B20 · ToF LiDAR · CSV pipeline · Python analysis &nbsp;|&nbsp; <a href="[LINK-TO-YOUR-LINKEDIN-POST]">Build photos &amp; write-up →</a></div>
+      <img class="photo" src="img/line-monitor.jpg" alt="Annotated transmission line monitor prototype showing nichrome wire, temperature sensor, LiDAR distance sensor, LCD display, voltage regulator, and fan wind simulator">
+      <!-- Swap the href below for your actual MakeOHI/O LinkedIn post URL when you grab it;
+           it currently points at your profile so the link isn't broken on the live site. -->
+      <div class="spec"><b>Bench:</b> ESP32 · DS18B20 · ToF LiDAR · CSV pipeline · Python analysis &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/thomas-hong-ece">Build photos &amp; write-up →</a></div>
     </article>
 
     <article class="log">
       <div class="log-id">LOG 02 · PRODUCTION TOOL · <span class="status">ADOPTED BY TEAM, DEMOED TO MANAGEMENT</span></div>
-      <h3>Asset Data Automation Tool — AEP</h3>
+      <h3>Asset Data Automation Tool · AEP</h3>
       <p>Converting raw source logs into risk-analysis-ready data was automated for only 4 of 10 asset types; the other 6 required a ~1,000-step manual process. I built a Python application that handles all 10: pick the asset type, select the inventory and source files, and it validates formats, flags mismatches with clear errors, and produces audit-ready, upload-ready CSVs with a processing log. Packaged as a Windows executable so anyone on the team can run it. Three clicks, no Python required.</p>
       <p><em>Code is employer IP and not public; happy to walk through the architecture in conversation.</em></p>
       <div class="spec"><b>Bench:</b> Python · GUI design · data validation · deployed as .exe</div>
@@ -236,7 +243,10 @@
       <h3>Hong Computing: 200+ Custom Systems</h3>
       <p>A PC building business I started before my first engineering class. Over 200 systems designed, assembled, validated, and delivered, plus the diagnostic work when machines come back broken: power-delivery instability, memory-timing failures, thermal throttling that only shows under sustained load. Custom air and liquid cooling loops for thermally constrained builds, cutting peak CPU/GPU temps 15 to 25&nbsp;°C.</p>
       <p>Real customers, real consequences: misdiagnose something and it comes back to me. It's where my troubleshooting instincts come from.</p>
-      <div class="photo-slot">[ ADD PHOTO: your best build, ideally a custom loop mid-assembly. ]</div>
+      <!-- Hero shot of your best custom loop build goes here when you have it:
+      <img class="photo" src="img/custom-loop.jpg" alt="Custom liquid-cooled build by Hong Computing"> -->
+      <img class="photo" src="img/production-grid.jpg" alt="Grid of 50 custom PC builds delivered by Hong Computing between 2021 and 2026">
+      <p class="fig-caption">FIG. 03.1 · PRODUCTION SAMPLE: 50 OF 200+ DELIVERED UNITS, 2021 TO 2026</p>
       <div class="spec"><b>Bench:</b> systematic root-cause diagnosis · custom cooling design · component-level validation</div>
     </article>
 
@@ -260,7 +270,6 @@
     <div class="sec-label">EXPERIENCE</div>
     <div class="xp">
       <div class="xp-row"><div class="xp-when">2026 - NOW</div><div class="xp-what"><b>American Electric Power</b> · Engineering Intern, Transmission Strategy &amp; Grid. <span>Asset vulnerability assessment across an 11-state grid; identified and led resolution of two production data defects.</span></div></div>
-      <div class="xp-row"><div class="xp-when">FALL 2026</div><div class="xp-what"><b>Marathon Petroleum</b> · Refining Electrical Engineering Co-op (incoming). <span>E&amp;I project engineering, Detroit refinery.</span></div></div>
       <div class="xp-row"><div class="xp-when">2025 - NOW</div><div class="xp-what"><b>OSU Nanotech West Laboratory</b> · Undergraduate Researcher. <span>Photolithography &amp; wafer processing; standardized process docs, cutting new-researcher onboarding time ~30%.</span></div></div>
       <div class="xp-row"><div class="xp-when">2025</div><div class="xp-what"><b>Boeing-Sponsored Engineering Internship</b> · Team Lead, IgnisKey. <span>See LOG 04.</span></div></div>
       <div class="xp-row"><div class="xp-when">2021 - NOW</div><div class="xp-what"><b>Hong Computing</b> · Founder. <span>See LOG 03.</span></div></div>
@@ -298,6 +307,9 @@
     <p class="colophon">Hand-built, single file, no framework. Last calibrated July 2026.</p>
   </div>
 </footer>
+
+</body>
+</html>
 
 </body>
 </html>
