@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thomas Hong · Hardware &amp; Electrical Engineering</title>
 <meta name="description" content="Thomas Hong. ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
-<!-- Open Graph: makes the link unfurl properly in LinkedIn/recruiter emails.
-     AFTER DEPLOY: replace the two [YOUR-SITE-URL] values with your real GitHub Pages URL,
-     and make sure img/line-monitor.jpg exists (use the MakeOHI/O build photo). -->
+<meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Thomas Hong · Hardware &amp; Electrical Engineering">
 <meta property="og:description" content="ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
@@ -16,18 +14,18 @@
 <meta name="twitter:card" content="summary_large_image">
 <!--
   ─────────────────────────────────────────────────────────────
-  REMAINING TO-DOS
-  1. Upload img/line-monitor.jpg and img/production-grid.jpg
-     to the img/ folder in the repo (this file expects them).
-  2. Put your resume PDF at resume/Thomas_Hong_Resume.pdf.
-  3. Swap the LOG 01 spec link for your actual MakeOHI/O
-     LinkedIn post URL (currently points at your profile).
-  4. Update the two [YOUR-SITE-URL] values in the OG tags
-     above with your real GitHub Pages URL after deploy.
-  5. Hero custom-loop photo for LOG 03 is a commented-out
-     img tag above the grid; uncomment when you have the shot.
-  6. GitHub link is intentionally out of the footer until the
-     decoder repo exists. Re-add it next to LinkedIn then.
+  SILVER MONO REV · REMAINING TO-DOS
+  1. Resume PDF at resume/Thomas_Hong_Resume.pdf (update grad
+     date to Dec 2028 + add site URL to header before upload).
+  2. Swap LOG 01 spec link for the MakeOHI/O post URL
+     (currently points at your profile so nothing is broken).
+  3. AEP tool screenshot -> img/aep-tool.png, then uncomment
+     the img tag in LOG 02.
+  4. Custom-loop hero for LOG 03 is a commented img tag.
+  5. Boeing CAD re-render -> img/igniskey.jpg, then uncomment
+     the img tag in LOG 04. No confidential slide exports.
+  6. GitHub link returns to the footer when the decoder repo
+     is live.
   ─────────────────────────────────────────────────────────────
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,14 +33,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F3F5F2;
-    --card:#FBFCFA;
-    --ink:#141B22;
-    --muted:#5A646C;
-    --copper:#B25B28;
-    --hot:#C74A2B;
-    --teal:#2E7D8A;
-    --grid:#D9DFDA;
+    --paper:#141414;
+    --card:#1C1C1D;
+    --ink:#EAEAEA;
+    --muted:#909094;
+    --copper:#D8D8DC;  /* accent: silver (original variable names kept so nothing else breaks) */
+    --hot:#EAEAEA;
+    --teal:#7FA8C7;    /* links: steel blue */
+    --grid:#2D2D2F;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -136,7 +134,7 @@
   .spec b{color:var(--ink);font-weight:500}
   .photo-slot{
     margin:14px 0 6px;border:1px dashed var(--grid);
-    background:repeating-linear-gradient(45deg,transparent,transparent 10px,#eef1ee 10px,#eef1ee 20px);
+    background:repeating-linear-gradient(45deg,transparent,transparent 10px,#1E1E1F 10px,#1E1E1F 20px);
     color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:12.5px;
     padding:34px 16px;text-align:center;
   }
@@ -206,9 +204,9 @@
 <svg class="sagline" viewBox="0 0 880 34" preserveAspectRatio="none" aria-hidden="true">
   <defs>
     <linearGradient id="thermal" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#2E7D8A"/>
-      <stop offset="0.55" stop-color="#B25B28"/>
-      <stop offset="1" stop-color="#C74A2B"/>
+      <stop offset="0" stop-color="#3A3A3E"/>
+      <stop offset="0.55" stop-color="#909094"/>
+      <stop offset="1" stop-color="#D8D8DC"/>
     </linearGradient>
   </defs>
   <path d="M0,8 Q440,40 880,8" fill="none" stroke="url(#thermal)" stroke-width="2"/>
@@ -225,8 +223,7 @@
       <p>24-hour makeathon build (MakeOHI/O 2026): a live demonstration of dynamic line rating. Nichrome wire stands in for a conductor; an ESP32 reads contact temperature, ambient conditions, and a time-of-flight LiDAR tracking sag off a weighted target. As the wire heats, it expands, and the system watches it happen.</p>
       <p>The hard part was physical: every sensor mount melted off past 50&nbsp;°C until heat-shrink tubing held at 4am. Logged 700+ measurements; analysis matched IEEE&nbsp;738 thermal expansion models within ~5% error, including a forced-convection cooling demo most teams didn't model.</p>
       <img class="photo" src="img/line-monitor.jpg" alt="Annotated transmission line monitor prototype showing nichrome wire, temperature sensor, LiDAR distance sensor, LCD display, voltage regulator, and fan wind simulator">
-      <!-- Swap the href below for your actual MakeOHI/O LinkedIn post URL when you grab it;
-           it currently points at your profile so the link isn't broken on the live site. -->
+      <!-- Swap the href below for your actual MakeOHI/O LinkedIn post URL when you grab it. -->
       <div class="spec"><b>Bench:</b> ESP32 · DS18B20 · ToF LiDAR · CSV pipeline · Python analysis &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/thomas-hong-ece">Build photos &amp; write-up →</a></div>
     </article>
 
@@ -235,6 +232,8 @@
       <h3>Asset Data Automation Tool · AEP</h3>
       <p>Converting raw source logs into risk-analysis-ready data was automated for only 4 of 10 asset types; the other 6 required a ~1,000-step manual process. I built a Python application that handles all 10: pick the asset type, select the inventory and source files, and it validates formats, flags mismatches with clear errors, and produces audit-ready, upload-ready CSVs with a processing log. Packaged as a Windows executable so anyone on the team can run it. Three clicks, no Python required.</p>
       <p><em>Code is employer IP and not public; happy to walk through the architecture in conversation.</em></p>
+      <!-- After manager confirmation, add the dummy-data screenshot:
+      <img class="photo" src="img/aep-tool.png" alt="Asset data automation tool interface showing asset type selection and file validation workflow"> -->
       <div class="spec"><b>Bench:</b> Python · GUI design · data validation · deployed as .exe</div>
     </article>
 
@@ -254,6 +253,8 @@
       <div class="log-id">LOG 04 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></div>
       <h3>IgnisKey Hardware Prototype · Boeing-Sponsored Internship</h3>
       <p>Led a 4-person engineering team through 5 prototype iterations of a PCB-based device, balancing competing thermal and ergonomic constraints and reducing build complexity each revision. Delivered a functional prototype and a formal design review to Boeing engineers on schedule. Our trade-off documentation was cited by their engineers as a model for future reviews.</p>
+      <!-- Clean re-render from your own CAD goes here (no confidential slide exports):
+      <img class="photo" src="img/igniskey.jpg" alt="IgnisKey PCB prototype developed during Boeing-sponsored engineering internship"> -->
       <div class="spec"><b>Bench:</b> PCB design · prototype iteration · design review · team lead of 4</div>
     </article>
 
@@ -301,7 +302,7 @@
       <a href="mailto:hong.1258@osu.edu">hong.1258@osu.edu</a>
       <a href="https://www.linkedin.com/in/thomas-hong-ece">LinkedIn</a>
       <!-- Re-add GitHub here once the decoder repo is live:
-      <a href="https://github.com/YOUR-USERNAME">GitHub</a> -->
+      <a href="https://github.com/thomas-hong-ece">GitHub</a> -->
       <a href="resume/Thomas_Hong_Resume.pdf">Résumé (PDF)</a>
     </div>
     <p class="colophon">Hand-built, single file, no framework. Last calibrated July 2026.</p>
