@@ -27,8 +27,8 @@
   4. Custom-loop hero for LOG 03 is a commented img tag.
   5. DONE: LOG 04 now carries drawing IGK-001 at
      img/igniskey-drawing.png (own CAD, own switch design).
-  6. GitHub link returns to the footer when the decoder repo
-     is live.
+  6. DONE: GitHub link is live in the footer; decoder repo
+     at github.com/thomas-hong-ece/itch-decoder.
   ─────────────────────────────────────────────────────────────
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -416,10 +416,11 @@
     </article>
 
     <article class="log cold">
-      <div class="log-id">LOG 05 · IN DEVELOPMENT · <span class="status">TARGET: FALL 2026</span></div>
+      <div class="log-id">LOG 05 · IN DEVELOPMENT · <span class="status">ADD ORDER DECODE PASSING, 1-CYCLE LATENCY</span></div>
       <h3>FPGA Market-Data Decoder (Verilog)</h3>
-      <p>An ITCH-style exchange-feed decoder in Verilog: fixed-format message parser built as a finite state machine, a trigger module that fires on configured instruments, and a self-checking testbench driven by a Python packet generator with randomized corner cases. Success metric: clock cycles from last byte in to valid out.</p>
-      <div class="spec"><b>Bench:</b> Verilog · FSM design · self-checking testbench · Python verification &nbsp;|&nbsp; <b>Status:</b> in development, repo link coming</div>
+      <p>An ITCH-style exchange-feed decoder: a byte-serial finite state machine that parses the 36-byte Add Order message, a trigger module doing a parallel compare against a configurable watchlist, and a self-checking testbench driven by a Python packet generator. Success metric is clock cycles from last byte in to valid out, currently 1, deterministic across every vector.</p>
+      <p>The generator emits six deliberate corner cases before any random ones: all zeros, all ones, single bit set, high bit only, and payload bytes that collide with the message-type marker. Uniform random values essentially never reach those boundaries, and they are where shift-register bugs actually live. Add Order is verified; other message types are not written yet, and the repo says so.</p>
+      <div class="spec"><b>Bench:</b> Verilog · FSM design · self-checking testbench · Python verification &nbsp;|&nbsp; <a href="https://github.com/thomas-hong-ece/itch-decoder">Source &amp; results →</a></div>
     </article>
 
   </section>
@@ -481,8 +482,7 @@
     <div class="contact">
       <a href="mailto:hong.1258@osu.edu">hong.1258@osu.edu</a>
       <a href="https://www.linkedin.com/in/thomas-hong-ece">LinkedIn</a>
-      <!-- Re-add GitHub here once the decoder repo is live:
-      <a href="https://github.com/thomas-hong-ece">GitHub</a> -->
+      <a href="https://github.com/thomas-hong-ece">GitHub</a>
       <a href="resume/Thomas_Hong_Resume.pdf">Résumé (PDF)</a>
     </div>
     <p class="colophon">Hand-built, single file, no framework. Last calibrated August 2026.</p>
