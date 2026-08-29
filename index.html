@@ -287,12 +287,12 @@
         </div>
         <div class="log-media">
           <figure>
-            <svg class="photo" viewBox="0 0 640 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="aepTitle2 aepDesc2">
+            <svg class="photo" viewBox="0 0 640 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="aepTitle2 aepDesc2">
               <title id="aepTitle2">Asset data automation tool, interface mockup</title>
-              <desc id="aepDesc2">A Windows desktop application titled Copperleaf Status Automation Tool. Three file selection rows labelled Enter Source, Enter Comparison, and Select File Destination, each with a Browse button. A green Start Process button below them, and a process log panel showing validation and export messages with placeholder data.</desc>
+              <desc id="aepDesc2">A Windows desktop application titled Copperleaf Status Automation Tool. A dropdown for choosing the asset type, then three file selection rows labelled Enter Source, Enter Comparison, and Select File Destination, each with a Browse button. A green Start Process button below them, and a process log panel showing validation and export messages with placeholder data.</desc>
 
               <!-- window body -->
-              <rect x="8" y="8" width="624" height="484" fill="#F0F0F0" stroke="#9A9A9A" stroke-width="1"/>
+              <rect x="8" y="8" width="624" height="544" fill="#F0F0F0" stroke="#9A9A9A" stroke-width="1"/>
 
               <!-- title bar -->
               <rect x="8" y="8" width="624" height="30" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
@@ -303,52 +303,62 @@
                 <path d="M618,18 l10,10 M628,18 l-10,10"/>
               </g>
 
+
+              <!-- asset type dropdown -->
+              <text x="24" y="72" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Select Asset Type</text>
+              <rect x="24" y="80" width="280" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,106 V80 H304" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="98" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Transformer</text>
+              <rect x="282" y="81" width="21" height="24" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M288,90 l4.5,5 l4.5,-5" fill="none" stroke="#3A3A3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="318" y="98" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="11" fill="#6A6A6A">10 asset types</text>
+
               <!-- row 1 -->
-              <text x="24" y="72" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Source</text>
-              <rect x="24" y="80" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
-              <path d="M24,106 V80 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
-              <text x="32" y="98" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\source_log.xlsx</text>
-              <rect x="508" y="80" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
-              <path d="M508,80 H612 V106" fill="none" stroke="#FFFFFF" stroke-width="1"/>
-              <text x="560" y="98" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+              <text x="24" y="132" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Source</text>
+              <rect x="24" y="140" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,166 V140 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="158" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\source_log.xlsx</text>
+              <rect x="508" y="140" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,140 H612 V166" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="158" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
 
               <!-- row 2 -->
-              <text x="24" y="138" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Comparison</text>
-              <rect x="24" y="146" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
-              <path d="M24,172 V146 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
-              <text x="32" y="164" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\inventory.xlsx</text>
-              <rect x="508" y="146" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
-              <path d="M508,146 H612 V172" fill="none" stroke="#FFFFFF" stroke-width="1"/>
-              <text x="560" y="164" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+              <text x="24" y="198" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Comparison</text>
+              <rect x="24" y="206" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,232 V206 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="224" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\inventory.xlsx</text>
+              <rect x="508" y="206" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,206 H612 V232" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="224" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
 
               <!-- row 3 -->
-              <text x="24" y="204" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Select File Destination</text>
-              <rect x="24" y="212" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
-              <path d="M24,238 V212 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
-              <text x="32" y="230" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\output\</text>
-              <rect x="508" y="212" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
-              <path d="M508,212 H612 V238" fill="none" stroke="#FFFFFF" stroke-width="1"/>
-              <text x="560" y="230" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+              <text x="24" y="264" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Select File Destination</text>
+              <rect x="24" y="272" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,298 V272 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="290" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\output\</text>
+              <rect x="508" y="272" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,272 H612 V298" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="290" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
 
               <!-- start button -->
-              <rect x="24" y="264" width="180" height="38" fill="#4CAF50" stroke="#3D8B40" stroke-width="1"/>
-              <path d="M24,264 H204" fill="none" stroke="#6BC46F" stroke-width="1.4"/>
-              <text x="114" y="288" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Start Process</text>
+              <rect x="24" y="324" width="180" height="38" fill="#4CAF50" stroke="#3D8B40" stroke-width="1"/>
+              <path d="M24,324 H204" fill="none" stroke="#6BC46F" stroke-width="1.4"/>
+              <text x="114" y="348" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Start Process</text>
 
               <!-- log panel -->
-              <text x="24" y="334" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Process Log</text>
-              <rect x="24" y="342" width="588" height="130" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
-              <path d="M24,472 V342 H612" fill="none" stroke="#A0A0A0" stroke-width="1"/>
-              <rect x="598" y="343" width="13" height="128" fill="#F0F0F0" stroke="#D4D4D4" stroke-width="1"/>
-              <rect x="599" y="344" width="11" height="42" fill="#CDCDCD"/>
+              <text x="24" y="394" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Process Log</text>
+              <rect x="24" y="402" width="588" height="130" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,532 V402 H612" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <rect x="598" y="403" width="13" height="128" fill="#F0F0F0" stroke="#D4D4D4" stroke-width="1"/>
+              <rect x="599" y="404" width="11" height="42" fill="#CDCDCD"/>
               <g font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#222222">
-                <text x="32" y="362">[09:14:02]  Asset type: TRANSFORMER</text>
-                <text x="32" y="380">[09:14:02]  Source validated .............. 1,204 rows</text>
-                <text x="32" y="398">[09:14:03]  Comparison validated .......... 1,204 rows</text>
-                <text x="32" y="416">[09:14:05]  3 mismatches flagged, see column J</text>
-                <text x="32" y="434">[09:14:06]  Writing output ...</text>
+                <text x="32" y="422">[09:14:02]  Asset type: TRANSFORMER</text>
+                <text x="32" y="440">[09:14:02]  Source validated .............. 1,204 rows</text>
+                <text x="32" y="458">[09:14:03]  Comparison validated .......... 1,204 rows</text>
+                <text x="32" y="476">[09:14:05]  3 mismatches flagged, see column J</text>
+                <text x="32" y="494">[09:14:06]  Writing output ...</text>
               </g>
-              <text x="32" y="452" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#1B6B2F">[09:14:07]  Export complete: asset_export.csv</text>
+              <text x="32" y="512" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#1B6B2F">[09:14:07]  Export complete: asset_export.csv</text>
             </svg>
             <figcaption class="fig-caption">FIG. 02.1 · INTERFACE MOCKUP · PLACEHOLDER DATA, NOT A SCREENSHOT</figcaption>
           </figure>
