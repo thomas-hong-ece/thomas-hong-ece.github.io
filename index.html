@@ -417,10 +417,46 @@
 
     <article class="log cold">
       <div class="log-id">LOG 05 · IN DEVELOPMENT · <span class="status">ADD ORDER DECODE PASSING, 1-CYCLE LATENCY</span></div>
-      <h3>FPGA Market-Data Decoder (Verilog)</h3>
-      <p>An ITCH-style exchange-feed decoder: a byte-serial finite state machine that parses the 36-byte Add Order message, a trigger module doing a parallel compare against a configurable watchlist, and a self-checking testbench driven by a Python packet generator. Success metric is clock cycles from last byte in to valid out, currently 1, deterministic across every vector.</p>
-      <p>The generator emits six deliberate corner cases before any random ones: all zeros, all ones, single bit set, high bit only, and payload bytes that collide with the message-type marker. Uniform random values essentially never reach those boundaries, and they are where shift-register bugs actually live. Add Order is verified; other message types are not written yet, and the repo says so.</p>
-      <div class="spec"><b>Bench:</b> Verilog · FSM design · self-checking testbench · Python verification &nbsp;|&nbsp; <a href="https://github.com/thomas-hong-ece/itch-decoder">Source &amp; results →</a></div>
+      <div class="log-grid">
+        <div class="log-text">
+          <h3>FPGA Market-Data Decoder (Verilog)</h3>
+          <p>An ITCH-style exchange-feed decoder: a byte-serial finite state machine that parses the 36-byte Add Order message, a trigger module doing a parallel compare against a configurable watchlist, and a self-checking testbench driven by a Python packet generator. Success metric is clock cycles from last byte in to valid out, currently 1, deterministic across every vector.</p>
+          <p>The generator emits six deliberate corner cases before any random ones: all zeros, all ones, single bit set, high bit only, and payload bytes that collide with the message-type marker. Uniform random values essentially never reach those boundaries, and they are where shift-register bugs actually live. Add Order is verified; other message types are not written yet, and the repo says so.</p>
+          <div class="spec"><b>Bench:</b> Verilog · FSM design · self-checking testbench · Python verification &nbsp;|&nbsp; <a href="https://github.com/thomas-hong-ece/itch-decoder">Source &amp; results →</a></div>
+        </div>
+        <div class="log-media">
+          <figure>
+            <svg class="photo" viewBox="0 0 640 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tdTitle tdDesc">
+              <title id="tdTitle">Decoder timing diagram</title>
+              <desc id="tdDesc">Timing diagram showing the final three bytes of a message entering the decoder while in_valid is high, followed by out_valid asserting one clock cycle after the last byte, with the one-cycle latency marked.</desc>
+
+              <text x="24" y="28" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="0.08em" fill="#909094">DECODE TIMING · LAST BYTE IN TO VALID OUT</text>
+
+              <line x1="118" y1="48" x2="118" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="176" y1="48" x2="176" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="234" y1="48" x2="234" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="292" y1="48" x2="292" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="350" y1="48" x2="350" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="408" y1="48" x2="408" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="466" y1="48" x2="466" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="524" y1="48" x2="524" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/><line x1="582" y1="48" x2="582" y2="278" stroke="#2D2D2F" stroke-width="1" stroke-dasharray="2 5"/>
+
+              <text x="108" y="66" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#EAEAEA">clk</text>
+              <path d="M118,70 L118,52 L147,52 L147,70 L176,70 L176,52 L205,52 L205,70 L234,70 L234,52 L263,52 L263,70 L292,70 L292,52 L321,52 L321,70 L350,70 L350,52 L379,52 L379,70 L408,70 L408,52 L437,52 L437,70 L466,70 L466,52 L495,52 L495,70 L524,70 L524,52 L553,52 L553,70 L582,70" fill="none" stroke="#909094" stroke-width="1.6"/>
+
+              <text x="108" y="124" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#EAEAEA">in_valid</text>
+              <path d="M118,128 L118,128 L118,110 L292,110 L292,128 L582,128" fill="none" stroke="#7FA8C7" stroke-width="1.8"/>
+
+              <text x="108" y="186" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#EAEAEA">in_byte</text>
+              <path d="M118,181 L123,172 L171,172 L176,181 L171,190 L123,190 Z" fill="#20252B" stroke="#7FA8C7" stroke-width="1.3"/><text x="147.0" y="186" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#EAEAEA">B33</text><path d="M176,181 L181,172 L229,172 L234,181 L229,190 L181,190 Z" fill="#20252B" stroke="#7FA8C7" stroke-width="1.3"/><text x="205.0" y="186" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#EAEAEA">B34</text><path d="M234,181 L239,172 L287,172 L292,181 L287,190 L239,190 Z" fill="#20252B" stroke="#7FA8C7" stroke-width="1.3"/><text x="263.0" y="186" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#EAEAEA">B35</text><path d="M292,181 L297,172 L577,172 L582,181 L577,190 L297,190 Z" fill="#1A1A1C" stroke="#7FA8C7" stroke-width="1.3"/><text x="437.0" y="186" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#5E5E63">—</text>
+
+              <text x="108" y="248" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#EAEAEA">out_valid</text>
+              <path d="M118,252 L292,252 L292,234 L350,234 L350,252 L582,252" fill="none" stroke="#C97A4A" stroke-width="1.8"/>
+
+              <!-- latency marker -->
+              <line x1="292" y1="278" x2="350" y2="278" stroke="#C97A4A" stroke-width="1.4"/>
+              <path d="M292,274 L292,282 M350,274 L350,282" stroke="#C97A4A" stroke-width="1.4"/>
+              <text x="321.0" y="300" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C97A4A">1 CYCLE</text>
+
+              <text x="24" y="322" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#5E5E63">B33–B35 = FINAL BYTES OF 36-BYTE ADD ORDER MESSAGE</text>
+            </svg>
+            <figcaption class="fig-caption">FIG. 05.1 · DECODE TIMING, LAST BYTE TO VALID OUT</figcaption>
+          </figure>
+        </div>
+      </div>
     </article>
 
   </section>
