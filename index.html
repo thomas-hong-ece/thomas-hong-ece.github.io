@@ -193,6 +193,498 @@
   .xp-what span{color:var(--muted)}
 
   /* ── bench / skills ──────────────────────────────────── */
+  .bench-group{margin-bottom:22px}
+  .bench-head{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;
+    color:var(--copper);margin-bottom:10px;
+  }
+  .bench li .cal{color:var(--muted);font-size:11.5px;letter-spacing:.06em;margin-left:6px}
+  .bench{display:flex;flex-wrap:wrap;gap:10px}
+  .bench li{
+    list-style:none;font-family:"IBM Plex Mono",monospace;font-size:13px;
+    border:1px solid var(--grid);background:var(--card);
+    padding:7px 12px;
+  }
+
+  /* ── footer ──────────────────────────────────────────── */
+  footer{
+    margin-top:56px;padding:36px 0 64px;
+    border-top:2px solid var(--ink);
+  }
+  .contact{display:flex;flex-wrap:wrap;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:14px}
+  .colophon{margin-top:22px;font-size:13px;color:var(--muted)}
+
+  @media (max-width:560px){
+    .xp-row{grid-template-columns:1fr;gap:2px}
+    .log{padding:20px 18px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">
+      <span>PRELIMINARY DATASHEET · REV 2026.08</span>
+      <span>COLUMBUS, OH · US PERSON</span>
+    </div>
+    <h1>Thomas Hong</h1>
+    <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of December 2028</p>
+    <p class="thesis">I build and debug physical systems: <em>PCBs, sensors, and the tools that keep them honest.</em></p>
+
+    <div class="ratings" aria-label="Selected figures">
+      <div class="ratings-title">ABSOLUTE MAXIMUM RATINGS (SELECTED)</div>
+      <table>
+        <tr><td>Custom systems designed, built &amp; delivered</td><td>200+ units</td></tr>
+        <tr><td>Grid asset database supporting vulnerability assessments</td><td>70,000+ assets</td></tr>
+        <tr><td>Instrumentation projects, schematic revisions in progress</td><td>13 projects</td></tr>
+        <tr><td>Sensor measurements logged, single 24-hr build</td><td>700+ pts</td></tr>
+        <tr><td>PCB prototype iterations to formal design review</td><td>5 revs</td></tr>
+        <tr><td>Cleanroom contamination incidents, 5+ months</td><td>0</td></tr>
+      </table>
+    </div>
+  </div>
+</header>
+
+<svg class="sagline" viewBox="0 0 880 34" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="thermal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3A3A3E"/>
+      <stop offset="0.55" stop-color="#909094"/>
+      <stop offset="1" stop-color="#D8D8DC"/>
+    </linearGradient>
+  </defs>
+  <path d="M0,8 Q440,40 880,8" fill="none" stroke="url(#thermal)" stroke-width="2"/>
+</svg>
+
+<main class="wrap">
+
+  <section id="projects">
+    <div class="sec-label">PROJECT LOG</div>
+
+    <article class="log">
+      <div class="log-id">LOG 01 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></div>
+      <div class="log-grid">
+        <div class="log-text">
+          <h3>Dynamic Transmission Line Monitor</h3>
+          <p>24-hour makeathon build (MakeOHI/O 2026): a live demonstration of dynamic line rating. Nichrome wire stands in for a conductor; an ESP32 reads contact temperature, ambient conditions, and a time-of-flight LiDAR tracking sag off a weighted target. As the wire heats, it expands, and the system watches it happen.</p>
+          <p>The hard part was physical: every sensor mount melted off past 50&nbsp;°C until heat-shrink tubing held at 4am. Logged 700+ measurements; analysis matched IEEE&nbsp;738 thermal expansion models within ~5% error, including a forced-convection cooling demo most teams didn't model.</p>
+          <!-- Swap the href below for your actual MakeOHI/O LinkedIn post URL when you grab it. -->
+          <div class="spec"><b>Bench:</b> ESP32 · DS18B20 · ToF LiDAR · CSV pipeline · Python analysis &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/thomas-hong-ece">Build photos &amp; write-up →</a></div>
+        </div>
+        <div class="log-media">
+          <figure>
+            <a href="img/line-monitor.jpg" target="_blank" rel="noopener">
+              <span class="zoomable"><img class="photo" src="img/line-monitor.jpg" alt="Annotated transmission line monitor prototype showing nichrome wire, temperature sensor, LiDAR distance sensor, LCD display, voltage regulator, and fan wind simulator" loading="lazy"></span>
+            </a>
+            <figcaption class="fig-caption">FIG. 01.1 · INSTRUMENTED TEST RIG, ANNOTATED</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="log">
+      <div class="log-id">LOG 02 · PRODUCTION TOOL · <span class="status">ADOPTED BY TEAM, DEMOED TO MANAGEMENT</span></div>
+      <div class="log-grid">
+        <div class="log-text">
+          <h3>Asset Data Automation Tool · AEP</h3>
+          <p>Converting raw source logs into risk-analysis-ready data was automated for only 4 of 10 asset types; the other 6 required a ~1,000-step manual process. I built a Python application that handles all 10: pick the asset type, select the inventory and source files, and it validates formats, flags mismatches with clear errors, and produces audit-ready, upload-ready CSVs with a processing log. Packaged as a Windows executable so anyone on the team can run it. Three clicks, no Python required.</p>
+          <p><em>Code is employer IP and not public; happy to walk through the architecture in conversation.</em></p>
+          <div class="spec"><b>Bench:</b> Python · GUI design · data validation · deployed as .exe</div>
+        </div>
+        <div class="log-media">
+          <figure>
+            <svg class="photo" viewBox="0 0 640 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="aepTitle2 aepDesc2">
+              <title id="aepTitle2">Asset data automation tool, interface mockup</title>
+              <desc id="aepDesc2">A Windows desktop application titled Copperleaf Status Automation Tool. A dropdown for choosing the asset type, then three file selection rows labelled Enter Source, Enter Comparison, and Select File Destination, each with a Browse button. A green Start Process button below them, and a process log panel showing validation and export messages with placeholder data.</desc>
+
+              <!-- window body -->
+              <rect x="8" y="8" width="624" height="544" fill="#F0F0F0" stroke="#9A9A9A" stroke-width="1"/>
+
+              <!-- title bar -->
+              <rect x="8" y="8" width="624" height="30" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+              <text x="20" y="28" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Copperleaf Status Automation Tool</text>
+              <g stroke="#4A4A4A" stroke-width="1.1" fill="none">
+                <path d="M572,23 h10"/>
+                <rect x="595" y="18" width="10" height="10"/>
+                <path d="M618,18 l10,10 M628,18 l-10,10"/>
+              </g>
+
+
+              <!-- asset type dropdown -->
+              <text x="24" y="72" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Select Asset Type</text>
+              <rect x="24" y="80" width="280" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,106 V80 H304" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="98" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Transformer</text>
+              <rect x="282" y="81" width="21" height="24" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M288,90 l4.5,5 l4.5,-5" fill="none" stroke="#3A3A3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="318" y="98" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="11" fill="#6A6A6A">10 asset types</text>
+
+              <!-- row 1 -->
+              <text x="24" y="132" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Source</text>
+              <rect x="24" y="140" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,166 V140 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="158" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\source_log.xlsx</text>
+              <rect x="508" y="140" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,140 H612 V166" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="158" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+
+              <!-- row 2 -->
+              <text x="24" y="198" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Comparison</text>
+              <rect x="24" y="206" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,232 V206 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="224" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\inventory.xlsx</text>
+              <rect x="508" y="206" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,206 H612 V232" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="224" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+
+              <!-- row 3 -->
+              <text x="24" y="264" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Select File Destination</text>
+              <rect x="24" y="272" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,298 V272 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="290" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\output\</text>
+              <rect x="508" y="272" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,272 H612 V298" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="290" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+
+              <!-- start button -->
+              <rect x="24" y="324" width="180" height="38" fill="#4CAF50" stroke="#3D8B40" stroke-width="1"/>
+              <path d="M24,324 H204" fill="none" stroke="#6BC46F" stroke-width="1.4"/>
+              <text x="114" y="348" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Start Process</text>
+
+              <!-- log panel -->
+              <text x="24" y="394" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Process Log</text>
+              <rect x="24" y="402" width="588" height="130" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,532 V402 H612" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <rect x="598" y="403" width="13" height="128" fill="#F0F0F0" stroke="#D4D4D4" stroke-width="1"/>
+              <rect x="599" y="404" width="11" height="42" fill="#CDCDCD"/>
+              <g font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#222222">
+                <text x="32" y="422">[09:14:02]  Asset type: TRANSFORMER</text>
+                <text x="32" y="440">[09:14:02]  Source validated .............. 1,204 rows</text>
+                <text x="32" y="458">[09:14:03]  Comparison validated .......... 1,204 rows</text>
+                <text x="32" y="476">[09:14:05]  3 mismatches flagged, see column J</text>
+                <text x="32" y="494">[09:14:06]  Writing output ...</text>
+              </g>
+              <text x="32" y="512" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#1B6B2F">[09:14:07]  Export complete: asset_export.csv</text>
+            </svg>
+            <figcaption class="fig-caption">FIG. 02.1 · INTERFACE MOCKUP · PLACEHOLDER DATA, NOT A SCREENSHOT</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="log">
+      <div class="log-id">LOG 03 · LONGITUDINAL · <span class="status">EST. 2021, STILL RUNNING</span></div>
+      <div class="log-grid">
+        <div class="log-text">
+          <h3>Hong Computing: 200+ Custom Systems</h3>
+          <p>A PC building business I started before my first engineering class. Over 200 systems designed, assembled, validated, and delivered, plus the diagnostic work when machines come back broken: power-delivery instability, memory-timing failures, thermal throttling that only shows under sustained load. Custom air and liquid cooling loops for thermally constrained builds, cutting peak CPU/GPU temps 15 to 25&nbsp;°C.</p>
+          <p>Real customers, real consequences: misdiagnose something and it comes back to me. It's where my troubleshooting instincts come from.</p>
+          <div class="spec"><b>Bench:</b> systematic root-cause diagnosis · custom cooling design · component-level validation</div>
+        </div>
+        <div class="log-media">
+          <figure>
+            <a href="img/production-grid.jpg" target="_blank" rel="noopener">
+              <span class="zoomable"><img class="photo" src="img/production-grid.jpg" alt="Grid of 50 custom PC builds delivered by Hong Computing between 2021 and 2026" loading="lazy"></span>
+            </a>
+            <figcaption class="fig-caption">FIG. 03.1 · PRODUCTION SAMPLE: 50 OF 200+ DELIVERED UNITS, 2021 TO 2026</figcaption>
+          </figure>
+          <!-- Custom loop hero shot goes here when you have it:
+          add a second figure block pointing at img/custom-loop.jpg -->
+        </div>
+      </div>
+    </article>
+
+    <article class="log">
+      <div class="log-id">LOG 04 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></div>
+      <div class="log-grid">
+        <div class="log-text">
+          <h3>IgnisKey: Custom Heated Key Switch · Boeing-Sponsored Internship</h3>
+          <p>A heated keyboard needs its element close enough to the touch surface to matter, and off-the-shelf switches have no volume to put one in. So the switch became the design problem. I packaged a thermistor into a custom two-piece housing, seated above the PCB in the switch cavity, with the heat path running up through the stem into a carbon fiber keycap. Carbon fiber conducts poorly through its thickness but well in-plane, so heat arriving at one small stem contact spreads across the whole key instead of pooling.</p>
+          <p>Led a 4-person team through 5 prototype iterations, balancing thermal against ergonomic constraints and cutting build complexity each revision. Delivered a functional prototype and a formal design review to Boeing engineers on schedule. Our trade-off documentation was cited by their engineers as a model for future reviews.</p>
+          <div class="spec"><b>Bench:</b> mechanical design (Onshape) · PCB design · thermal packaging · materials selection · design review · team lead of 4</div>
+        </div>
+        <div class="log-media">
+          <figure>
+            <a href="img/igniskey-drawing.png" target="_blank" rel="noopener">
+              <span class="sheet zoomable"><img class="photo" src="img/igniskey-drawing.png" alt="Assembly drawing IGK-001, IgnisKey thermal key assembly: exploded isometric view with ballooned callouts beside a section view, plus a parts list giving material for each of the seven components" loading="lazy" width="2200" height="1375"></span>
+            </a>
+            <figcaption class="fig-caption">FIG. 04.1 · IGK-001 · EXPLODED &amp; SECTION VIEWS</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="log cold">
+      <div class="log-id">LOG 05 · IN DEVELOPMENT · <span class="status">TARGET: FALL 2026</span></div>
+      <h3>FPGA Market-Data Decoder (Verilog)</h3>
+      <p>An ITCH-style exchange-feed decoder in Verilog: fixed-format message parser built as a finite state machine, a trigger module that fires on configured instruments, and a self-checking testbench driven by a Python packet generator with randomized corner cases. Success metric: clock cycles from last byte in to valid out.</p>
+      <div class="spec"><b>Bench:</b> Verilog · FSM design · self-checking testbench · Python verification &nbsp;|&nbsp; <b>Status:</b> in development, repo link coming</div>
+    </article>
+
+  </section>
+
+  <section id="experience">
+    <div class="sec-label">EXPERIENCE</div>
+    <div class="xp">
+      <div class="xp-row"><div class="xp-when">2026 - NOW</div><div class="xp-what"><b>Marathon Petroleum</b> · Electrical &amp; Instrumentation Engineering Co-op. <span>AutoCAD schematic revisions across 13 projects; wired and wireless instrumentation for a 146,000 barrel/day refinery.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2026</div><div class="xp-what"><b>American Electric Power</b> · Engineering Intern, Transmission Strategy &amp; Grid. <span>Asset vulnerability assessment across an 11-state grid; identified and led resolution of two production data defects.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2025 - NOW</div><div class="xp-what"><b>OSU Nanotech West Laboratory</b> · Undergraduate Researcher. <span>Photolithography &amp; wafer processing; standardized process docs, cutting new-researcher onboarding time ~30%.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2025</div><div class="xp-what"><b>Boeing-Sponsored Engineering Internship</b> · Team Lead, IgnisKey. <span>See LOG 04.</span></div></div>
+      <div class="xp-row"><div class="xp-when">2021 - NOW</div><div class="xp-what"><b>Hong Computing</b> · Founder. <span>See LOG 03.</span></div></div>
+    </div>
+  </section>
+
+  <section id="bench">
+    <div class="sec-label">ON THE BENCH</div>
+    <div class="bench-group">
+      <div class="bench-head">HARDWARE &amp; ELECTRICAL</div>
+      <ul class="bench">
+        <li>PCB design · OrCAD / Cadence <span class="cal">INTERMEDIATE · CERTIFIED</span></li>
+        <li>AutoCAD electrical &amp; instrumentation schematics</li>
+        <li>Wired &amp; wireless process instrumentation</li>
+        <li>ESP32 / Arduino</li>
+        <li>I²C · SPI · UART</li>
+        <li>Oscilloscopes &amp; bench instruments</li>
+        <li>Soldering &amp; rework</li>
+        <li>Verilog <span class="cal">BEGINNER · IN PROGRESS, SEE LOG 05</span></li>
+      </ul>
+    </div>
+
+    <div class="bench-group">
+      <div class="bench-head">LAB &amp; FABRICATION</div>
+      <ul class="bench">
+        <li>Photolithography / cleanroom</li>
+        <li>Wafer processing · spin coating · mask alignment</li>
+        <li>Stylus profilometry · optical microscopy</li>
+      </ul>
+    </div>
+
+    <div class="bench-group">
+      <div class="bench-head">SOFTWARE &amp; TOOLS</div>
+      <ul class="bench">
+        <li>Python <span class="cal">ADVANCED</span></li>
+        <li>C / C++ <span class="cal">INTERMEDIATE</span></li>
+        <li>MATLAB <span class="cal">INTERMEDIATE</span></li>
+        <li>SQL <span class="cal">INTERMEDIATE</span></li>
+        <li>Git <span class="cal">INTERMEDIATE</span></li>
+        <li>Linux <span class="cal">INTERMEDIATE</span></li>
+        <li>Windows <span class="cal">ADVANCED</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="contact">
+      <a href="mailto:hong.1258@osu.edu">hong.1258@osu.edu</a>
+      <a href="https://www.linkedin.com/in/thomas-hong-ece">LinkedIn</a>
+      <!-- Re-add GitHub here once the decoder repo is live:
+      <a href="https://github.com/thomas-hong-ece">GitHub</a> -->
+      <a href="resume/Thomas_Hong_Resume.pdf">Résumé (PDF)</a>
+    </div>
+    <p class="colophon">Hand-built, single file, no framework. Last calibrated August 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Hong · Hardware &amp; Electrical Engineering</title>
+<meta name="description" content="Thomas Hong. ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Thomas Hong · Hardware &amp; Electrical Engineering">
+<meta property="og:description" content="ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
+<meta property="og:url" content="https://thomas-hong-ece.github.io">
+<meta property="og:image" content="https://thomas-hong-ece.github.io/img/line-monitor.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!--
+  ─────────────────────────────────────────────────────────────
+  SILVER MONO REV · REMAINING TO-DOS
+  1. Resume PDF at resume/Thomas_Hong_Resume.pdf: grad
+     date is correct (Aug 2025 - Dec 2028), Marathon/AEP order
+     is correct. Still needs: site URL added to the header
+     before upload.
+  2. Swap LOG 01 spec link for the MakeOHI/O post URL
+     (currently points at your profile so nothing is broken).
+  3. LOG 02 carries an inline SVG interface mockup with
+     placeholder data. Swap for the real dummy-data
+     screenshot if/when your manager confirms.
+  4. Custom-loop hero for LOG 03 is a commented img tag.
+  5. DONE: LOG 04 now carries drawing IGK-001 at
+     img/igniskey-drawing.png (own CAD, own switch design).
+  6. GitHub link returns to the footer when the decoder repo
+     is live.
+  ─────────────────────────────────────────────────────────────
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#141414;
+    --card:#1C1C1D;
+    --ink:#EAEAEA;
+    --muted:#909094;
+    --copper:#D8D8DC;  /* accent: silver (original variable names kept so nothing else breaks) */
+    --hot:#EAEAEA;
+    --teal:#7FA8C7;    /* links: steel blue */
+    --grid:#2D2D2F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.55;
+    font-size:16.5px;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
+  a:hover{color:var(--copper)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--copper);outline-offset:2px;border-radius:2px}
+
+  /* ── header / datasheet hero ─────────────────────────── */
+  header{padding:64px 0 40px;border-bottom:2px solid var(--ink)}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;letter-spacing:.08em;
+    color:var(--muted);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    margin-bottom:20px;
+  }
+  h1{
+    font-family:"Archivo",sans-serif;font-weight:900;
+    font-size:clamp(2.6rem,7vw,4.4rem);
+    letter-spacing:-.015em;line-height:1.02;
+    text-transform:uppercase;
+  }
+  .subtitle{
+    margin-top:14px;font-size:1.05rem;color:var(--muted);max-width:56ch;
+  }
+  .thesis{
+    margin-top:22px;font-size:1.18rem;font-weight:500;max-width:52ch;
+  }
+  .thesis em{font-style:normal;color:var(--copper)}
+
+  /* sag-line divider: nod to the transmission-line monitor */
+  .sagline{display:block;width:100%;height:34px;margin:8px 0}
+
+  /* ── datasheet ratings table ─────────────────────────── */
+  .ratings{
+    margin:36px 0 8px;
+    border:1.5px solid var(--ink);
+    background:var(--card);
+  }
+  .ratings-title{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.08em;
+    padding:10px 14px;border-bottom:1.5px solid var(--ink);
+    background:var(--ink);color:var(--paper);
+  }
+  .ratings table{width:100%;border-collapse:collapse;font-family:"IBM Plex Mono",monospace;font-size:14px}
+  .ratings td{padding:10px 14px;border-bottom:1px solid var(--grid);vertical-align:top}
+  .ratings tr:last-child td{border-bottom:none}
+  .ratings td:last-child{text-align:right;white-space:nowrap;color:var(--copper);font-weight:500}
+
+  /* ── sections ────────────────────────────────────────── */
+  section{padding:44px 0 8px}
+  .sec-label{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.1em;
+    color:var(--muted);margin-bottom:26px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--grid)}
+
+  /* ── project log entries ─────────────────────────────── */
+  .log{
+    background:var(--card);
+    border:1px solid var(--grid);
+    border-left:4px solid var(--copper);
+    padding:26px 28px;
+    margin-bottom:22px;
+  }
+  .log.cold{border-left-color:var(--teal)}
+  .log-id{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.09em;
+    color:var(--muted);margin-bottom:8px;
+  }
+  .log-id .status{color:var(--copper);font-weight:500}
+  .log h3{
+    font-family:"Archivo",sans-serif;font-weight:700;font-size:1.35rem;
+    letter-spacing:-.01em;margin-bottom:10px;
+  }
+  .log p{margin-bottom:12px;max-width:64ch}
+  .spec{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted);
+    border-top:1px dashed var(--grid);padding-top:10px;margin-top:4px;
+  }
+  .spec b{color:var(--ink);font-weight:500}
+  .photo-slot{
+    margin:14px 0 6px;border:1px dashed var(--grid);
+    background:repeating-linear-gradient(45deg,transparent,transparent 10px,#1E1E1F 10px,#1E1E1F 20px);
+    color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+    padding:34px 16px;text-align:center;line-height:1.6;
+  }
+  .photo{width:100%;height:auto;margin:14px 0 6px;border:1px solid var(--grid)}
+  .fig-caption{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;
+    color:var(--muted);margin:2px 0 12px;
+  }
+
+  /* text left, media right. the entry bleeds past the 880px wrap on
+     wide screens so the media column can grow without squeezing the
+     prose. bleed amounts are guarded by breakpoints wide enough to
+     absorb them, so nothing ever overflows horizontally. */
+  .log-grid{display:grid;grid-template-columns:1fr;gap:0}
+  .log-media figure{margin:16px 0 0}
+  .log-media .photo{margin:0;width:100%;height:auto;display:block}
+  .log-media .fig-caption{margin:8px 0 0}
+  .log-media a{display:block;text-decoration:none}
+  .log-media a:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+  .log-media .photo-slot{margin:16px 0 0}
+  .log-media .sheet{border:1px solid var(--grid);display:block;line-height:0}
+  .log-media img{max-width:100%;height:auto;display:block}
+
+  .zoomable{position:relative;display:block}
+  .zoomable::after{
+    content:"OPEN FULL SIZE ↗";
+    position:absolute;right:8px;bottom:8px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
+    background:rgba(20,20,20,.82);color:#EAEAEA;padding:5px 9px;border:1px solid #3A3A3E;
+    opacity:0;transition:opacity .15s;pointer-events:none;
+  }
+  .zoomable:hover::after,a:focus-visible .zoomable::after{opacity:1}
+  @media (prefers-reduced-motion: reduce){ .zoomable::after{transition:none} }
+
+  @media (min-width:1100px){
+    .log{width:calc(100% + 158px);margin-left:-79px}
+    .log-grid{grid-template-columns:1fr 522px;gap:10px 30px;align-items:center}
+    .log-media figure,.log-media .photo-slot{margin:0}
+  }
+  @media (min-width:1300px){
+    .log{width:calc(100% + 354px);margin-left:-177px}
+    .log-grid{grid-template-columns:1fr 647px}
+  }
+
+  /* ── experience ──────────────────────────────────────── */
+  .xp{border-top:1px solid var(--grid)}
+  .xp-row{
+    display:grid;grid-template-columns:130px 1fr;gap:16px;
+    padding:16px 0;border-bottom:1px solid var(--grid);
+  }
+  .xp-when{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted);padding-top:2px}
+  .xp-what b{font-weight:600}
+  .xp-what span{color:var(--muted)}
+
+  /* ── bench / skills ──────────────────────────────────── */
   .bench{display:flex;flex-wrap:wrap;gap:10px}
   .bench li{
     list-style:none;font-family:"IBM Plex Mono",monospace;font-size:13px;
