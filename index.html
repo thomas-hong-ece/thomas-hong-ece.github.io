@@ -21,8 +21,9 @@
      before upload.
   2. Swap LOG 01 spec link for the MakeOHI/O post URL
      (currently points at your profile so nothing is broken).
-  3. AEP tool screenshot -> img/aep-tool.png, then uncomment
-     the img tag in LOG 02.
+  3. LOG 02 carries an inline SVG interface mockup with
+     placeholder data. Swap for the real dummy-data
+     screenshot if/when your manager confirms.
   4. Custom-loop hero for LOG 03 is a commented img tag.
   5. DONE: LOG 04 now carries drawing IGK-001 at
      img/igniskey-drawing.png (own CAD, own switch design).
@@ -285,9 +286,72 @@
           <div class="spec"><b>Bench:</b> Python · GUI design · data validation · deployed as .exe</div>
         </div>
         <div class="log-media">
-          <div class="photo-slot">AEP TOOL SCREENSHOT<br>(DUMMY DATA)<br>PENDING MANAGER CONFIRMATION</div>
-          <!-- Once confirmed, replace the placeholder div above with a figure
-          block matching LOG 01, pointing at img/aep-tool.png -->
+          <figure>
+            <svg class="photo" viewBox="0 0 640 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="aepTitle2 aepDesc2">
+              <title id="aepTitle2">Asset data automation tool, interface mockup</title>
+              <desc id="aepDesc2">A Windows desktop application titled Copperleaf Status Automation Tool. Three file selection rows labelled Enter Source, Enter Comparison, and Select File Destination, each with a Browse button. A green Start Process button below them, and a process log panel showing validation and export messages with placeholder data.</desc>
+
+              <!-- window body -->
+              <rect x="8" y="8" width="624" height="484" fill="#F0F0F0" stroke="#9A9A9A" stroke-width="1"/>
+
+              <!-- title bar -->
+              <rect x="8" y="8" width="624" height="30" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="1"/>
+              <text x="20" y="28" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Copperleaf Status Automation Tool</text>
+              <g stroke="#4A4A4A" stroke-width="1.1" fill="none">
+                <path d="M572,23 h10"/>
+                <rect x="595" y="18" width="10" height="10"/>
+                <path d="M618,18 l10,10 M628,18 l-10,10"/>
+              </g>
+
+              <!-- row 1 -->
+              <text x="24" y="72" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Source</text>
+              <rect x="24" y="80" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,106 V80 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="98" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\source_log.xlsx</text>
+              <rect x="508" y="80" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,80 H612 V106" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="98" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+
+              <!-- row 2 -->
+              <text x="24" y="138" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Enter Comparison</text>
+              <rect x="24" y="146" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,172 V146 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="164" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\inventory.xlsx</text>
+              <rect x="508" y="146" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,146 H612 V172" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="164" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+
+              <!-- row 3 -->
+              <text x="24" y="204" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Select File Destination</text>
+              <rect x="24" y="212" width="474" height="26" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,238 V212 H498" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <text x="32" y="230" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#333333">C:\Users\...\output\</text>
+              <rect x="508" y="212" width="104" height="26" fill="#E1E1E1" stroke="#ADADAD" stroke-width="1"/>
+              <path d="M508,212 H612 V238" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+              <text x="560" y="230" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Browse</text>
+
+              <!-- start button -->
+              <rect x="24" y="264" width="180" height="38" fill="#4CAF50" stroke="#3D8B40" stroke-width="1"/>
+              <path d="M24,264 H204" fill="none" stroke="#6BC46F" stroke-width="1.4"/>
+              <text x="114" y="288" text-anchor="middle" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-weight="600" font-size="13" fill="#FFFFFF">Start Process</text>
+
+              <!-- log panel -->
+              <text x="24" y="334" font-family="Segoe UI, IBM Plex Sans, sans-serif" font-size="12" fill="#1A1A1A">Process Log</text>
+              <rect x="24" y="342" width="588" height="130" fill="#FFFFFF" stroke="#7A7A7A" stroke-width="1"/>
+              <path d="M24,472 V342 H612" fill="none" stroke="#A0A0A0" stroke-width="1"/>
+              <rect x="598" y="343" width="13" height="128" fill="#F0F0F0" stroke="#D4D4D4" stroke-width="1"/>
+              <rect x="599" y="344" width="11" height="42" fill="#CDCDCD"/>
+              <g font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#222222">
+                <text x="32" y="362">[09:14:02]  Asset type: TRANSFORMER</text>
+                <text x="32" y="380">[09:14:02]  Source validated .............. 1,204 rows</text>
+                <text x="32" y="398">[09:14:03]  Comparison validated .......... 1,204 rows</text>
+                <text x="32" y="416">[09:14:05]  3 mismatches flagged, see column J</text>
+                <text x="32" y="434">[09:14:06]  Writing output ...</text>
+              </g>
+              <text x="32" y="452" font-family="Consolas, IBM Plex Mono, monospace" font-size="11" fill="#1B6B2F">[09:14:07]  Export complete: asset_export.csv</text>
+            </svg>
+            <figcaption class="fig-caption">FIG. 02.1 · INTERFACE MOCKUP · PLACEHOLDER DATA, NOT A SCREENSHOT</figcaption>
+          </figure>
         </div>
       </div>
     </article>
