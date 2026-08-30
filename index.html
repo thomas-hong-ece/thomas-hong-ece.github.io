@@ -12,6 +12,8 @@
 <meta property="og:url" content="https://thomas-hong-ece.github.io">
 <meta property="og:image" content="https://thomas-hong-ece.github.io/img/line-monitor.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Thomas Hong">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Cpath d='M4 11 Q16 25 28 11' fill='none' stroke='%23D8D8DC' stroke-width='2.5'/%3E%3C/svg%3E">
 <!--
   ─────────────────────────────────────────────────────────────
   SILVER MONO REV · REMAINING TO-DOS
@@ -56,6 +58,12 @@
     font-size:16.5px;
   }
   .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  .skip{
+    position:absolute;left:-9999px;top:0;
+    background:var(--ink);color:var(--paper);padding:10px 16px;z-index:50;
+    font-family:"IBM Plex Mono",monospace;font-size:13px;
+  }
+  .skip:focus{left:8px;top:8px}
   a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
   a:hover{color:var(--copper)}
   a:focus-visible,button:focus-visible{outline:3px solid var(--copper);outline-offset:2px;border-radius:2px}
@@ -98,8 +106,9 @@
     background:var(--ink);color:var(--paper);
   }
   .ratings table{width:100%;border-collapse:collapse;font-family:"IBM Plex Mono",monospace;font-size:14px}
-  .ratings td{padding:10px 14px;border-bottom:1px solid var(--grid);vertical-align:top}
-  .ratings tr:last-child td{border-bottom:none}
+  .ratings td,.ratings th{padding:10px 14px;border-bottom:1px solid var(--grid);vertical-align:top;
+    text-align:left;font-weight:400;color:var(--ink)}
+  .ratings tr:last-child td,.ratings tr:last-child th{border-bottom:none}
   .ratings td:last-child{text-align:right;white-space:nowrap;color:var(--copper);font-weight:500}
 
   /* ── sticky section nav ──────────────────────────────── */
@@ -108,23 +117,33 @@
     background:rgba(20,20,20,.92);
     border-bottom:1px solid var(--grid);
     backdrop-filter:saturate(140%) blur(6px);
+    transition:background-color .2s ease, border-color .2s ease;
   }
-  .secnav .wrap{display:flex;gap:26px;align-items:center;padding-top:11px;padding-bottom:11px}
+  .secnav .wrap{
+    display:flex;gap:26px;align-items:center;justify-content:flex-end;
+    padding-top:11px;padding-bottom:11px;
+    transition:padding .2s ease;
+  }
   .secnav a{
     font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;
     color:var(--muted);text-decoration:none;
+    transition:font-size .2s ease;
   }
+
+  /* shrinks and lightens once it is actually stuck to the top */
+  .secnav.compact{
+    background:rgba(20,20,20,.62);
+    border-bottom-color:rgba(45,45,47,.6);
+  }
+  .secnav.compact .wrap{padding-top:6px;padding-bottom:6px}
+  .secnav.compact a{font-size:10.5px}
   .secnav a:hover{color:var(--ink)}
-  .secnav .who{margin-left:auto;color:var(--copper);letter-spacing:.08em}
-  @media (max-width:560px){
-    .secnav .wrap{gap:16px}
-    .secnav .who{display:none}
-  }
+  @media (max-width:560px){ .secnav .wrap{gap:16px;justify-content:center} }
 
   /* ── sections ────────────────────────────────────────── */
   section{padding:44px 0 8px;scroll-margin-top:58px}
   .sec-label{
-    font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.1em;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:400;letter-spacing:.1em;
     color:var(--muted);margin-bottom:26px;
     display:flex;align-items:center;gap:14px;
   }
@@ -240,6 +259,7 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#projects">Skip to content</a>
 
 <header>
   <div class="wrap">
@@ -249,28 +269,28 @@
     </div>
     <h1>Thomas Hong</h1>
     <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of December 2028</p>
-    <p class="thesis">I build and debug physical systems: <em>PCBs, sensors, and the tools that keep them honest.</em></p>
+    <p class="thesis">I build hardware and the instruments that measure it: <em>PCBs, sensors, thermal systems.</em></p>
 
-    <div class="ratings" aria-label="Selected figures">
+    <div class="ratings" role="region" aria-label="Selected figures">
       <div class="ratings-title">ABSOLUTE MAXIMUM RATINGS (SELECTED)</div>
       <table>
-        <tr><td>Custom systems designed, built &amp; delivered</td><td>200+ units</td></tr>
-        <tr><td>Grid asset database supporting vulnerability assessments</td><td>70,000+ assets</td></tr>
-        <tr><td>Instrumentation projects, schematic revisions in progress</td><td>13 projects</td></tr>
-        <tr><td>Sensor measurements logged, single 24-hr build</td><td>700+ pts</td></tr>
-        <tr><td>PCB prototype iterations to formal design review</td><td>5 revs</td></tr>
-        <tr><td>Cleanroom contamination incidents, 5+ months</td><td>0</td></tr>
+        <tr><th scope="row">Custom systems designed, built &amp; delivered</th><td>200+ units</td></tr>
+        <tr><th scope="row">Grid asset database supporting vulnerability assessments</th><td>70,000+ assets</td></tr>
+        <tr><th scope="row">Instrumentation projects, schematic revisions in progress</th><td>13 projects</td></tr>
+        <tr><th scope="row">Sensor measurements logged, single 24-hr build</th><td>700+ pts</td></tr>
+        <tr><th scope="row">PCB prototype iterations to formal design review</th><td>5 revs</td></tr>
+        <tr><th scope="row">Cleanroom contamination incidents, 5+ months</th><td>0</td></tr>
       </table>
     </div>
   </div>
 </header>
 
-<nav class="secnav" aria-label="Section navigation">
+<div id="navtop" aria-hidden="true"></div>
+<nav class="secnav" id="secnav" aria-label="Section navigation">
   <div class="wrap">
-    <a href="#projects">PROJECT LOG</a>
+    <a href="#projects">PROJECTS</a>
     <a href="#experience">EXPERIENCE</a>
-    <a href="#bench">ON THE BENCH</a>
-    <span class="who">REV 2026.08</span>
+    <a href="#bench">SKILLS</a>
   </div>
 </nav>
 
@@ -288,7 +308,7 @@
 <main class="wrap">
 
   <section id="projects">
-    <div class="sec-label">PROJECT LOG</div>
+    <h2 class="sec-label">PROJECT LOG</h2>
 
     <article class="log">
       <div class="log-id">LOG 01 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></div>
@@ -490,7 +510,7 @@
   </section>
 
   <section id="experience">
-    <div class="sec-label">EXPERIENCE</div>
+    <h2 class="sec-label">EXPERIENCE</h2>
     <div class="xp">
       <div class="xp-row"><div class="xp-when">2026 - NOW</div><div class="xp-what"><b>Marathon Petroleum</b> · Electrical &amp; Instrumentation Engineering Co-op. <span>AutoCAD schematic revisions across 13 projects; wired and wireless instrumentation for a 146,000 barrel/day refinery.</span></div></div>
       <div class="xp-row"><div class="xp-when">2026</div><div class="xp-what"><b>American Electric Power</b> · Engineering Intern, Transmission Strategy &amp; Grid. <span>Asset vulnerability assessment across an 11-state grid; identified and led resolution of two production data defects.</span></div></div>
@@ -501,7 +521,7 @@
   </section>
 
   <section id="bench">
-    <div class="sec-label">ON THE BENCH</div>
+    <h2 class="sec-label">ON THE BENCH</h2>
     <div class="bench-group">
       <div class="bench-head">HARDWARE &amp; ELECTRICAL</div>
       <ul class="bench">
@@ -552,6 +572,19 @@
     <p class="colophon">Hand-built, single file, no framework. Last calibrated August 2026.</p>
   </div>
 </footer>
+
+<script>
+  // Compact the section bar once it is stuck to the top. IntersectionObserver
+  // on a sentinel is cheaper than listening to every scroll event.
+  (function () {
+    var nav = document.getElementById('secnav');
+    var top = document.getElementById('navtop');
+    if (!nav || !top || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle('compact', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(top);
+  })();
+</script>
 
 </body>
 </html>
