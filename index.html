@@ -102,8 +102,27 @@
   .ratings tr:last-child td{border-bottom:none}
   .ratings td:last-child{text-align:right;white-space:nowrap;color:var(--copper);font-weight:500}
 
+  /* ── sticky section nav ──────────────────────────────── */
+  .secnav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(20,20,20,.92);
+    border-bottom:1px solid var(--grid);
+    backdrop-filter:saturate(140%) blur(6px);
+  }
+  .secnav .wrap{display:flex;gap:26px;align-items:center;padding-top:11px;padding-bottom:11px}
+  .secnav a{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;
+    color:var(--muted);text-decoration:none;
+  }
+  .secnav a:hover{color:var(--ink)}
+  .secnav .who{margin-left:auto;color:var(--copper);letter-spacing:.08em}
+  @media (max-width:560px){
+    .secnav .wrap{gap:16px}
+    .secnav .who{display:none}
+  }
+
   /* ── sections ────────────────────────────────────────── */
-  section{padding:44px 0 8px}
+  section{padding:44px 0 8px;scroll-margin-top:58px}
   .sec-label{
     font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.1em;
     color:var(--muted);margin-bottom:26px;
@@ -230,7 +249,7 @@
     </div>
     <h1>Thomas Hong</h1>
     <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of December 2028</p>
-    <p class="thesis">I build hardware and the instruments that measure it: <em>PCBs, sensors, thermal systems.</em></p>
+    <p class="thesis">I build and debug physical systems: <em>PCBs, sensors, and the tools that keep them honest.</em></p>
 
     <div class="ratings" aria-label="Selected figures">
       <div class="ratings-title">ABSOLUTE MAXIMUM RATINGS (SELECTED)</div>
@@ -245,6 +264,15 @@
     </div>
   </div>
 </header>
+
+<nav class="secnav" aria-label="Section navigation">
+  <div class="wrap">
+    <a href="#projects">PROJECT LOG</a>
+    <a href="#experience">EXPERIENCE</a>
+    <a href="#bench">ON THE BENCH</a>
+    <span class="who">REV 2026.08</span>
+  </div>
+</nav>
 
 <svg class="sagline" viewBox="0 0 880 34" preserveAspectRatio="none" aria-hidden="true">
   <defs>
