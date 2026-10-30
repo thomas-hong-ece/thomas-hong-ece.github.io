@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Hong · Hardware &amp; Electrical Engineering</title>
-<meta name="description" content="Thomas Hong. ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
+<title>Thomas Hong · ECE</title>
+<meta name="description" content="Thomas Hong, ECE at Ohio State. Hardware, semiconductors and power systems: 200+ custom systems, a Boeing-sponsored key switch, cleanroom photolithography, grid asset work at AEP, and E&amp;I engineering at a Detroit refinery. Open to Summer 2027 engineering internships.">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Thomas Hong · Hardware &amp; Electrical Engineering">
-<meta property="og:description" content="ECE at Ohio State. PCB design, embedded sensing, reliability engineering. 200+ systems built.">
+<meta property="og:title" content="Thomas Hong · ECE">
+<meta property="og:description" content="Thomas Hong, ECE at Ohio State. Hardware, semiconductors and power systems: 200+ custom systems, a Boeing-sponsored key switch, cleanroom photolithography, grid asset work at AEP, and E&amp;I engineering at a Detroit refinery. Open to Summer 2027 engineering internships.">
 <meta property="og:url" content="https://thomas-hong-ece.github.io">
 <meta property="og:image" content="https://thomas-hong-ece.github.io/img/thomas.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -78,6 +78,7 @@
 
   /* ── header / datasheet hero ─────────────────────────── */
   header{padding:48px 0 8px}
+  .eyebrow a{color:inherit;text-decoration:none} .eyebrow a:hover{color:var(--copper)}
   .eyebrow{
     font-family:"IBM Plex Mono",monospace;
     font-size:12.5px;letter-spacing:.08em;
@@ -95,6 +96,9 @@
   }
   .subtitle{margin-top:14px;font-size:1.05rem;color:var(--muted);max-width:56ch}
   .thesis{margin-top:22px;font-size:1.28rem;font-weight:500;max-width:46ch;line-height:1.4}
+  .cta{margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;color:var(--muted);max-width:60ch;line-height:1.7}
+  .cta a{color:var(--copper);text-decoration:none;border-bottom:1px solid var(--matcha)}
+  .cta a:hover{color:var(--ink)}
   .thesis em{font-style:normal;color:var(--copper)}
 
   .portrait{flex:0 0 240px;margin:0;border:1.5px solid var(--ink);background:var(--card);position:relative}
@@ -444,14 +448,15 @@
 <header id="top">
   <div class="wrap">
     <div class="eyebrow">
-      <span>PRELIMINARY DATASHEET · REV 2026.10</span>
-      <span>COLUMBUS, OH · US PERSON</span>
+      <span>COLUMBUS, OH</span>
+      <span><a href="mailto:hong.1258@osu.edu">hong.1258@osu.edu</a></span>
     </div>
     <div class="hero-row">
       <div class="hero-text">
         <h1>Thomas Hong</h1>
         <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of December 2028</p>
         <p class="thesis">I build hardware and the instruments that measure it: <em>PCBs, sensors, thermal systems.</em></p>
+        <p class="cta">Open to Summer 2027 engineering internships, hardware, energy, semiconductors and beyond. <a href="mailto:hong.1258@osu.edu">hong.1258@osu.edu</a> · <a href="resume/Thomas_Hong_Resume.pdf">Résumé</a></p>
       </div>
       <!-- Portrait: drop a photo at img/thomas.jpg (portrait crop, ~800x1000).
            If the file is missing this whole slot removes itself. -->
@@ -859,7 +864,7 @@
       <a href="https://github.com/thomas-hong-ece">GitHub</a>
       <a href="resume/Thomas_Hong_Resume.pdf">Résumé (PDF)</a>
     </div>
-    <p class="colophon">Hand-built, single file, no framework. Last calibrated October 2026.</p>
+    <p class="colophon">Hand-built, single file, no framework.</p>
   </div>
 </footer>
 
@@ -965,6 +970,7 @@ var UNIT_DATA = {
   42: { name: "3700X / 2070 Super · AIO with display", cpu: "Ryzen 7 3700X", gpu: "RTX 2070 Super", ram: "32 GB DDR4", storage: "1 TB SSD", psu: "650 W 80+ Gold", cooling: "AIO with LCD display", tag: "GPU",
         fault: "GPU dead on arrival; AIO display needed calibration.", fix: "Traced a short on the GPU board, resoldered the damaged component, card came back to life. Calibrated the cooler's display separately." },
   43: { name: "3700X / 3070 build", cpu: "Ryzen 7 3700X", gpu: "RTX 3070", ram: "32 GB DDR4", psu: "800 W", case: "B550 ATX", tag: "CLEAN BUILD" },
+  14: { name: "3600 / Vision 3070 build", cpu: "Ryzen 5 3600", gpu: "Gigabyte Vision RTX 3070", ram: "16 GB DDR4", storage: "1 TB SSD", psu: "650 W 80+ Gold", tag: "CLEAN BUILD" },
   49: { same: 14, tag: "CPU", fault: "Bent CPU socket pins from shipping.", fix: "Straightened the pins under magnification, then ran a full stress test before delivery." }
 };
 
