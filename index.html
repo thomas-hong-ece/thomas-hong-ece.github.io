@@ -77,7 +77,7 @@
   .mono{font-family:"IBM Plex Mono",monospace}
 
   /* ── header / datasheet hero ─────────────────────────── */
-  header{padding:64px 0 24px}
+  header{padding:48px 0 8px}
   .eyebrow{
     font-family:"IBM Plex Mono",monospace;
     font-size:12.5px;letter-spacing:.08em;
@@ -104,14 +104,15 @@
     padding:6px 8px;border-top:1px solid var(--grid);
   }
   @media (max-width:640px){
-    .hero-row{flex-direction:column-reverse;align-items:flex-start;gap:20px}
-    .portrait{flex-basis:auto;width:180px}
+    .hero-row{flex-direction:column;align-items:flex-start;gap:20px}
+    .portrait{flex-basis:auto;width:200px}
   }
 
 
   /* ── timeline: polaroids on a dotted flight path ─────── */
   .timeline{margin:0 0 10px}
-  .sec-sub{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);margin:-6px 0 18px}
+  #timeline{padding-top:28px}
+  .sec-sub{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);margin:-6px 0 6px}
   .tl-status::first-letter{color:#4F8F3A}
   .tl-hint{color:var(--copper)}
   /* the board breaks out of the 880px column */
@@ -169,6 +170,10 @@
     .stop .pola,.stop.up .pola,.stop.down .pola{position:relative;left:auto;top:auto;bottom:auto;width:min(100%,420px);transform:rotate(var(--tilt,0deg))}
     button.pola:hover{transform:rotate(0deg)}
   }
+
+  /* ── doodle backdrop: faint matcha line icons ───────────── */
+  body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' fill='none' stroke='%235D8A4A' stroke-opacity='.16' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(40 60) rotate(-12) scale(1.1)'%3E%3Crect x='4' y='2' width='22' height='40' rx='2'/%3E%3Ccircle cx='15' cy='13' r='5'/%3E%3Ccircle cx='15' cy='28' r='5'/%3E%3Cpath d='M8 36h14'/%3E%3C/g%3E%3Cg transform='translate(250 30) rotate(25) scale(1)'%3E%3Cpath d='M4 40l14-14'/%3E%3Cpath d='M18 26l4 4 16-16-4-4z'/%3E%3Cpath d='M4 40l-2 2'/%3E%3C/g%3E%3Cg transform='translate(440 70) rotate(-8) scale(1.05)'%3E%3Cpath d='M2 2h30l8 8v30H2z'/%3E%3Crect x='14' y='14' width='14' height='14'/%3E%3Cpath d='M14 18h-8M14 24h-8M28 18h8M28 24h8M18 14V6M24 14V6M18 28v8M24 28v8'/%3E%3Ccircle cx='6' cy='36' r='1.5'/%3E%3C/g%3E%3Cg transform='translate(560 260) rotate(14) scale(1)'%3E%3Crect x='6' y='2' width='30' height='40' rx='3'/%3E%3Cpath d='M12 14a9 6 0 0 1 18 0'/%3E%3Cpath d='M21 14l4-5'/%3E%3Ccircle cx='21' cy='28' r='6'/%3E%3Cpath d='M14 38h4M24 38h4'/%3E%3C/g%3E%3Cg transform='translate(90 330) rotate(-18) scale(1)'%3E%3Cpath d='M8 10h26l-3 30H11z'/%3E%3Cpath d='M6 10h30'/%3E%3Cpath d='M26 2l-3 14'/%3E%3Ccircle cx='15' cy='34' r='2'/%3E%3Ccircle cx='21' cy='35' r='2'/%3E%3Ccircle cx='27' cy='34' r='2'/%3E%3Ccircle cx='18' cy='29' r='2'/%3E%3C/g%3E%3Cg transform='translate(300 250) rotate(8) scale(1.1)'%3E%3Crect x='2' y='6' width='38' height='28' rx='2'/%3E%3Cpath d='M6 24l5-8 4 12 4-14 4 10 4-6 3 6h4'/%3E%3Cpath d='M12 40h18'/%3E%3C/g%3E%3Cg transform='translate(480 470) rotate(-14) scale(1)'%3E%3Crect x='10' y='10' width='22' height='22' rx='2'/%3E%3Cpath d='M14 10V4M20 10V4M26 10V4M14 32v6M20 32v6M26 32v6M10 14H4M10 20H4M10 26H4M32 14h6M32 20h6M32 26h6'/%3E%3C/g%3E%3Cg transform='translate(150 540) rotate(22) scale(1)'%3E%3Cpath d='M38 8a8 8 0 0 1-10 10L10 36a4 4 0 0 1-6-6l18-18A8 8 0 0 1 32 2l-5 5 4 4z'/%3E%3C/g%3E%3Cg transform='translate(360 560) rotate(10) scale(0.9)'%3E%3Crect x='4' y='2' width='22' height='40' rx='2'/%3E%3Ccircle cx='15' cy='13' r='5'/%3E%3Ccircle cx='15' cy='28' r='5'/%3E%3Cpath d='M8 36h14'/%3E%3C/g%3E%3C/svg%3E");background-size:640px 640px;background-attachment:fixed}
+  @media (max-width:760px){body{background-size:420px 420px}}
 
   /* ── top nav ─────────────────────────────────────────── */
   .secnav{position:sticky;top:0;z-index:20;background:rgba(243,241,230,.9);border-bottom:1px solid var(--grid);backdrop-filter:saturate(140%) blur(6px)}
@@ -452,7 +457,7 @@
            If the file is missing this whole slot removes itself. -->
       <figure class="portrait">
         <img src="img/thomas.jpg" alt="Thomas Hong" width="800" height="1000" onerror="this.closest('.portrait').remove()">
-        <figcaption>FIG. 00 · OXLEY’S NUMBERS, 2026</figcaption>
+        <figcaption>FIG. 00 · OXLEY’S NUMBERS</figcaption>
       </figure>
     </div>
 
