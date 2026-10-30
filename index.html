@@ -108,18 +108,21 @@
 
   .sagline{display:block;width:100%;height:34px;margin:8px 0}
 
-  /* ── datasheet ratings table ─────────────────────────── */
-  .ratings{margin:36px 0 8px;border:1.5px solid var(--ink);background:var(--card)}
-  .ratings-title{
-    font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.08em;
-    padding:10px 14px;border-bottom:1.5px solid var(--ink);
-    background:var(--ink);color:var(--paper);
-  }
-  .ratings table{width:100%;border-collapse:collapse;font-family:"IBM Plex Mono",monospace;font-size:14px}
-  .ratings td,.ratings th{padding:10px 14px;border-bottom:1px solid var(--grid);vertical-align:top;
-    text-align:left;font-weight:400;color:var(--ink)}
-  .ratings tr:last-child td,.ratings tr:last-child th{border-bottom:none}
-  .ratings td:last-child{text-align:right;white-space:nowrap;color:var(--copper);font-weight:500}
+  /* ── live readout ────────────────────────────────────── */
+  .readout{margin:34px 0 6px;border:1.5px solid var(--ink);background:var(--card)}
+  .scope-wrap{position:relative;border-bottom:1px solid var(--grid);background:
+    linear-gradient(var(--grid) 1px,transparent 1px) 0 0/100% 19px,
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/44px 100%,#161617}
+  .scope{display:block;width:100%;height:76px}
+  .scope-tag{position:absolute;right:8px;top:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--muted);background:rgba(22,22,23,.9);padding:2px 6px;border:1px solid var(--grid)}
+  .tick{display:flex;align-items:center;gap:14px;padding:9px 14px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.08em;min-height:38px}
+  .tick-k{color:var(--muted);min-width:5ch}
+  .tick-v{color:var(--copper);font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tick-v::after{content:"▍";color:var(--copper);animation:blink 1s steps(1) infinite;margin-left:1px}
+  @keyframes blink{50%{opacity:0}}
+  .tick-status{color:var(--muted);font-size:11px;white-space:nowrap}
+  .tick-status::first-letter{color:#7FC77F}
+  @media (max-width:560px){ .tick{flex-wrap:wrap;gap:6px 12px} .tick-v{flex-basis:100%;white-space:normal} .tick-v::after{display:none} .scope-tag{display:none} }
 
   /* ── sticky section nav ──────────────────────────────── */
   .secnav{
@@ -152,17 +155,20 @@
   .sec-label::after{content:"";flex:1;height:1px;background:var(--grid)}
   .sec-note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin:-14px 0 22px;letter-spacing:.04em}
 
-  /* ── project cards (the index) ───────────────────────── */
-  .cards{display:grid;gap:16px}
+  /* ── project cards (the index) · 2 × 3 grid ──────────── */
+  .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
   .card{
-    display:grid;grid-template-columns:1fr 200px;gap:22px;align-items:center;
+    display:flex;flex-direction:column;gap:0;
     width:100%;text-align:left;cursor:pointer;
-    background:var(--card);border:1px solid var(--grid);border-left:4px solid var(--copper);
-    padding:22px 24px;
+    background:var(--card);border:1px solid var(--grid);border-top:4px solid var(--copper);
+    padding:0;
     transition:background-color .15s ease,border-color .15s ease,transform .15s ease;
   }
-  .card.cold{border-left-color:var(--teal)}
-  .card:hover{background:var(--card-hi);border-color:#45454A;transform:translateX(3px)}
+  .card > span:first-of-type{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px;order:2}
+  .card .thumb{order:1;border:0;border-bottom:1px solid var(--grid);aspect-ratio:16/9}
+  .card .card-open{margin-top:auto;padding-top:14px}
+  .card.cold{border-top-color:var(--teal)}
+  .card:hover{background:var(--card-hi);border-color:#45454A;border-top-color:var(--ink);transform:translateY(-3px)}
   .card:hover .card-open{color:var(--ink)}
   .card:hover .card-open::after{transform:translateX(4px)}
   .card .log-id{margin-bottom:6px}
@@ -180,20 +186,46 @@
   }
   .card-open::after{content:" →";display:inline-block;transition:transform .15s ease}
   .thumb{
-    display:block;aspect-ratio:4/3;border:1px solid var(--grid);background:var(--paper);
+    display:block;aspect-ratio:4/3;border:1px solid var(--grid);
+    background:repeating-linear-gradient(45deg,#161617,#161617 10px,#1C1C1D 10px,#1C1C1D 20px);
     overflow:hidden;position:relative;
   }
   .thumb img,.thumb svg{display:block;width:100%;height:100%;object-fit:cover}
+  .thumb img.gray{filter:grayscale(1) contrast(1.05)}
+  .card:hover .thumb img.gray{filter:none}
+  /* 2×2 mosaic thumb for the About card */
+  .thumb.mosaic{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:2px;background:var(--grid)}
+  .thumb.mosaic img{width:100%;height:100%;min-height:0;min-width:0}
   .thumb .thumb-tag{
     position:absolute;left:6px;bottom:6px;
     font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
     background:rgba(20,20,20,.85);border:1px solid #3A3A3E;padding:3px 6px;color:var(--ink);
   }
-  .card.featured{border-left-color:var(--ink)}
+  .card.featured{border-top-color:var(--ink)}
   @media (max-width:640px){
-    .card{grid-template-columns:1fr;gap:14px;padding:18px}
-    .thumb{order:-1;aspect-ratio:16/9}
+    .cards{grid-template-columns:1fr}
   }
+
+  /* ── about module: photo wall ─────────────────────────── */
+  .about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:34px;align-items:start}
+  .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .gallery figure{border:1px solid var(--grid);background:var(--card);line-height:0}
+  .gallery figure.wide{grid-column:span 2}
+  .gallery a{display:block}
+  .gallery img{display:block;width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;filter:grayscale(.15)}
+  .gallery figure.wide img{aspect-ratio:2/1}
+  .gallery a:hover img{filter:none}
+  .gallery figcaption{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--muted);
+    padding:7px 9px;border-top:1px solid var(--grid);line-height:1.4;
+  }
+  .gallery figcaption b{display:block;color:var(--ink);font-weight:500}
+  .facts{border:1px solid var(--grid);background:var(--card);margin-top:18px}
+  .facts div{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;border-bottom:1px solid var(--grid);font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+  .facts div:last-child{border-bottom:0}
+  .facts dt{color:var(--muted);letter-spacing:.06em;font-size:11px;padding-top:1px}
+  .facts dd{color:var(--ink);text-align:right}
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} .gallery figure.wide{grid-column:span 2} }
 
   /* ── shared log typography (used inside modules) ─────── */
   .log-id{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.09em;color:var(--muted);margin-bottom:8px}
@@ -284,19 +316,14 @@
   .wall-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start}
   @media (max-width:980px){ .wall-layout{grid-template-columns:1fr} }
   .wall{position:relative;border:1px solid var(--grid);background:var(--card);line-height:0;user-select:none}
+  .wall-layout{padding-top:6px}
   .wall img{display:block;width:100%;height:auto}
   .wall-grid{position:absolute;inset:0;display:grid}
   .unit{
-    position:relative;background:transparent;border:0;cursor:pointer;padding:0;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .unit::before{
-    content:"";position:absolute;inset:2px;border:1.5px solid transparent;
-    transition:border-color .12s ease,background-color .12s ease;
-  }
-  .unit::after{
-    content:"";position:absolute;inset:0;background:rgba(10,10,10,0);
-    transition:background-color .18s ease;pointer-events:none;
+    position:relative;border:0;cursor:pointer;padding:0;
+    background-repeat:no-repeat;   /* each tile carries its own slice of the photo (set by JS) */
+    transition:transform .16s ease,box-shadow .16s ease,filter .18s ease;
+    -webkit-tap-highlight-color:transparent;transform-origin:center;
   }
   .unit .n{
     position:absolute;left:5px;top:5px;line-height:1;
@@ -304,12 +331,19 @@
     background:rgba(20,20,20,.85);border:1px solid #3A3A3E;color:var(--ink);padding:2px 4px;
     opacity:0;transition:opacity .12s ease;
   }
-  .unit:hover::before,.unit:focus-visible::before{border-color:var(--copper);background:rgba(216,216,220,.08)}
-  .unit:hover .n,.unit:focus-visible .n,.unit[aria-pressed="true"] .n{opacity:1}
+  .unit:hover,.unit:focus-visible{
+    transform:scale(1.24);z-index:3;
+    box-shadow:0 12px 30px rgba(0,0,0,.7),0 0 0 1px #3A3A3E;
+  }
   .unit:focus-visible{outline:none}
-  .unit[aria-pressed="true"]::before{border-color:var(--ink);border-width:2px;background:rgba(216,216,220,.1)}
-  .wall.dim .unit:not([aria-pressed="true"]):not(.match)::after{background:rgba(10,10,10,.5)}
-  .wall.dim .unit.match::before{border-color:var(--signal)}
+  .unit:hover .n,.unit:focus-visible .n,.unit[aria-pressed="true"] .n{opacity:1}
+  .unit[aria-pressed="true"]{
+    transform:scale(1.1);z-index:2;
+    box-shadow:0 8px 22px rgba(0,0,0,.6),0 0 0 1.5px var(--copper);
+  }
+  .unit[aria-pressed="true"]:hover{transform:scale(1.24)}
+  .wall.dim .unit:not([aria-pressed="true"]):not(.match){filter:brightness(.42) saturate(.5)}
+  .wall.dim .unit.match{box-shadow:0 0 0 1.5px var(--signal)}
   @media (hover:none){ .unit .n{opacity:.75} }
 
   .sheet{border:1.5px solid var(--ink);background:var(--card);line-height:1.5}
@@ -395,16 +429,19 @@
       </figure>
     </div>
 
-    <div class="ratings" role="region" aria-label="Selected figures">
-      <div class="ratings-title">ABSOLUTE MAXIMUM RATINGS (SELECTED)</div>
-      <table>
-        <tr><th scope="row">Custom systems designed, built &amp; delivered</th><td>200+ units</td></tr>
-        <tr><th scope="row">Grid asset database supporting vulnerability assessments</th><td>70,000+ assets</td></tr>
-        <tr><th scope="row">Instrumentation projects, schematic revisions in progress</th><td>13 projects</td></tr>
-        <tr><th scope="row">Sensor measurements logged, single 24-hr build</th><td>700+ pts</td></tr>
-        <tr><th scope="row">PCB prototype iterations to formal design review</th><td>5 revs</td></tr>
-        <tr><th scope="row">Cleanroom contamination incidents, 5+ months</th><td>0</td></tr>
-      </table>
+    <!-- LIVE READOUT · scope trace that reacts to the cursor, plus a cycling
+         figure line. Replaces the old ratings table. Reduced-motion users get
+         a static trace and a fixed line. -->
+    <div class="readout" aria-label="Live readout">
+      <div class="scope-wrap">
+        <canvas class="scope" id="scope" aria-hidden="true"></canvas>
+        <span class="scope-tag" aria-hidden="true">CH1 · 2 V/DIV · TRIG'D</span>
+      </div>
+      <div class="tick">
+        <span class="tick-k" id="tick-k">FIG 01</span>
+        <span class="tick-v" id="tick-v">200+ CUSTOM SYSTEMS BUILT &amp; DELIVERED</span>
+        <span class="tick-status">● OPEN TO SUMMER 2027</span>
+      </div>
     </div>
   </div>
 </header>
@@ -434,9 +471,26 @@
   <!-- ═══════════════ PROJECT INDEX ═══════════════ -->
   <section id="projects">
     <h2 class="sec-label">PROJECT LOG</h2>
-    <p class="sec-note">5 ENTRIES · OPEN ANY MODULE FOR THE FULL WRITE-UP</p>
+    <p class="sec-note">6 MODULES · OPEN ANY ONE FOR THE FULL WRITE-UP</p>
 
     <div class="cards">
+      <button class="card featured" type="button" data-open="about" aria-haspopup="dialog">
+        <span>
+          <span class="log-id" style="display:block">LOG 00 · OPERATOR · <span class="status">UPPER DARBY, PA → COLUMBUS, OH</span></span>
+          <h3>About Me: Field Notes</h3>
+          <p>Who's behind the datasheet. Me at the cleanroom, the grid, the refinery and the bench, with the short version of how I got here.</p>
+          <span class="chips"><span class="chip">4 WORKPLACES</span><span class="chip">1 BUSINESS</span><span class="chip">PHOTOS</span></span>
+          <span class="card-open">OPEN MODULE</span>
+        </span>
+        <!-- 2×2 mosaic. Each image hides itself if the file is missing. -->
+        <span class="thumb mosaic">
+          <img src="img/about/nanotech.jpg" alt="" loading="lazy" onerror="this.remove()">
+          <img src="img/about/aep.jpg" alt="" loading="lazy" onerror="this.remove()">
+          <img src="img/about/marathon.jpg" alt="" loading="lazy" onerror="this.remove()">
+          <img src="img/about/bench.jpg" alt="" loading="lazy" onerror="this.remove()">
+        </span>
+      </button>
+
       <button class="card" type="button" data-open="log-01" aria-haspopup="dialog">
         <span>
           <span class="log-id" style="display:block">LOG 01 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></span>
@@ -462,7 +516,7 @@
         </span>
       </button>
 
-      <button class="card featured" type="button" data-open="log-03" aria-haspopup="dialog">
+      <button class="card" type="button" data-open="log-03" aria-haspopup="dialog">
         <span>
           <span class="log-id" style="display:block">LOG 03 · LONGITUDINAL · <span class="status">EST. 2021, STILL RUNNING</span></span>
           <h3>Hong Computing: 200+ Custom Systems</h3>
@@ -552,8 +606,67 @@
 
 <!-- ═══════════════ MODULES ═══════════════ -->
 
+<dialog class="module" id="about" aria-labelledby="about-t">
+  <div class="mod-bar"><span class="bar-title">MODULE 1 / 6 · LOG 00 · OPERATOR</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+  <div class="mod-body">
+    <div class="log-id">LOG 00 · OPERATOR · <span class="status">UPPER DARBY, PA → COLUMBUS, OH</span></div>
+    <h2 id="about-t">About Me: Field Notes</h2>
+    <div class="about-grid">
+      <div class="mod-text">
+        <!-- EDIT ME: this is a first draft in your voice from what I know. Make it yours. -->
+        <p>I'm Thomas. I grew up outside Philly and started building PCs for people before I'd taken a single engineering class. Two hundred machines later, that's still where my instincts come from: when something's broken, find the real cause, fix it properly, and don't let it come back.</p>
+        <p>At Ohio State I ended up in the places where hardware actually gets made and measured. The Nanotech West cleanroom, where I run photolithography and wafer processing. AEP Transmission, where I worked with data on about 70,000 grid assets and built a tool the team still uses. And now Marathon Petroleum, where I split my time between AutoCAD and the refinery floor as an E&amp;I co-op.</p>
+        <p>The common thread is that I like work where the details matter and mistakes are expensive. I'm looking for a Summer 2027 internship in hardware test, validation or bring-up, ideally somewhere I can get my hands on real equipment.</p>
+        <dl class="facts">
+          <div><dt>HOMETOWN</dt><dd>Upper Darby, PA</dd></div>
+          <div><dt>SCHOOL</dt><dd>Ohio State · ECE · Dec 2028</dd></div>
+          <div><dt>NOW</dt><dd>E&amp;I Co-op, Marathon Petroleum</dd></div>
+          <div><dt>LOOKING FOR</dt><dd>Summer 2027 · Test / Validation</dd></div>
+          <div><dt>OFF THE CLOCK</dt><dd><!-- EDIT ME --> Building things, mostly</dd></div>
+        </dl>
+        <div class="spec" style="margin-top:18px"><b>Contact:</b> <a href="mailto:hong.1258@osu.edu">hong.1258@osu.edu</a> · <a href="https://www.linkedin.com/in/thomas-hong-ece">LinkedIn</a> · <a href="resume/Thomas_Hong_Resume.pdf">Résumé</a></div>
+      </div>
+
+      <!-- PHOTO WALL · drop files into img/about/ with these names.
+           Any missing file removes its own tile, so add them as you get them.
+           Edit the captions to say where and when each one was taken. -->
+      <div class="gallery">
+        <figure class="wide">
+          <a href="img/about/bench.jpg" target="_blank" rel="noopener"><img src="img/about/bench.jpg" alt="Thomas at the workbench" loading="lazy" onerror="this.closest('figure').remove()"></a>
+          <figcaption><b>FIG. 00.1 · THE BENCH</b>Hong Computing, est. 2021</figcaption>
+        </figure>
+        <figure>
+          <a href="img/about/nanotech.jpg" target="_blank" rel="noopener"><img src="img/about/nanotech.jpg" alt="Thomas in cleanroom gear at Nanotech West" loading="lazy" onerror="this.closest('figure').remove()"></a>
+          <figcaption><b>FIG. 00.2 · CLEANROOM</b>OSU Nanotech West</figcaption>
+        </figure>
+        <figure>
+          <a href="img/about/aep.jpg" target="_blank" rel="noopener"><img src="img/about/aep.jpg" alt="Thomas at AEP Transmission" loading="lazy" onerror="this.closest('figure').remove()"></a>
+          <figcaption><b>FIG. 00.3 · THE GRID</b>AEP Transmission, 2026</figcaption>
+        </figure>
+        <figure>
+          <a href="img/about/marathon.jpg" target="_blank" rel="noopener"><img src="img/about/marathon.jpg" alt="Thomas in PPE at the Marathon refinery" loading="lazy" onerror="this.closest('figure').remove()"></a>
+          <figcaption><b>FIG. 00.4 · THE REFINERY</b>Marathon Petroleum, Detroit</figcaption>
+        </figure>
+        <figure>
+          <a href="img/about/boeing.jpg" target="_blank" rel="noopener"><img src="img/about/boeing.jpg" alt="IgnisKey team at the Boeing design review" loading="lazy" onerror="this.closest('figure').remove()"></a>
+          <figcaption><b>FIG. 00.5 · DESIGN REVIEW</b>IgnisKey team, 2025</figcaption>
+        </figure>
+        <figure>
+          <a href="img/about/makeohio.jpg" target="_blank" rel="noopener"><img src="img/about/makeohio.jpg" alt="Thomas at MakeOHI/O at 4am" loading="lazy" onerror="this.closest('figure').remove()"></a>
+          <figcaption><b>FIG. 00.6 · HOUR 20 OF 24</b>MakeOHI/O 2026</figcaption>
+        </figure>
+        <figure>
+          <a href="img/about/me.jpg" target="_blank" rel="noopener"><img src="img/about/me.jpg" alt="Thomas Hong" loading="lazy" onerror="this.closest('figure').remove()"></a>
+          <figcaption><b>FIG. 00.7 · OPERATOR</b>Off the clock</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="mod-foot"><button class="mod-nav" type="button" data-go="prev">← PREV</button><button class="mod-nav" type="button" data-go="next">NEXT →</button></div>
+</dialog>
+
 <dialog class="module" id="log-01" aria-labelledby="log-01-t">
-  <div class="mod-bar"><span class="bar-title">MODULE · LOG 01 / 05</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+  <div class="mod-bar"><span class="bar-title">MODULE 2 / 6 · LOG 01</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
   <div class="mod-body">
     <div class="log-id">LOG 01 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></div>
     <h2 id="log-01-t">Dynamic Transmission Line Monitor</h2>
@@ -582,7 +695,7 @@
 </dialog>
 
 <dialog class="module" id="log-02" aria-labelledby="log-02-t">
-  <div class="mod-bar"><span class="bar-title">MODULE · LOG 02 / 05</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+  <div class="mod-bar"><span class="bar-title">MODULE 3 / 6 · LOG 02</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
   <div class="mod-body">
     <div class="log-id">LOG 02 · PRODUCTION TOOL · <span class="status">ADOPTED BY TEAM, DEMOED TO MANAGEMENT</span></div>
     <h2 id="log-02-t">Asset Data Automation Tool · AEP</h2>
@@ -659,7 +772,7 @@
 </dialog>
 
 <dialog class="module" id="log-03" aria-labelledby="log-03-t">
-  <div class="mod-bar"><span class="bar-title">MODULE · LOG 03 / 05</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+  <div class="mod-bar"><span class="bar-title">MODULE 4 / 6 · LOG 03</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
   <div class="mod-body">
     <div class="log-id">LOG 03 · LONGITUDINAL · <span class="status">EST. 2021, STILL RUNNING</span></div>
     <h2 id="log-03-t">Hong Computing: 200+ Custom Systems</h2>
@@ -706,7 +819,7 @@
 </dialog>
 
 <dialog class="module" id="log-04" aria-labelledby="log-04-t">
-  <div class="mod-bar"><span class="bar-title">MODULE · LOG 04 / 05</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+  <div class="mod-bar"><span class="bar-title">MODULE 5 / 6 · LOG 04</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
   <div class="mod-body">
     <div class="log-id">LOG 04 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></div>
     <h2 id="log-04-t">IgnisKey: Custom Heated Key Switch · Boeing-Sponsored Internship</h2>
@@ -734,7 +847,7 @@
 </dialog>
 
 <dialog class="module" id="log-05" aria-labelledby="log-05-t">
-  <div class="mod-bar"><span class="bar-title">MODULE · LOG 05 / 05</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+  <div class="mod-bar"><span class="bar-title">MODULE 6 / 6 · LOG 05</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
   <div class="mod-body">
     <div class="log-id">LOG 05 · IN DEVELOPMENT · <span class="status">ADD ORDER DECODE PASSING, 1-CYCLE LATENCY</span></div>
     <h2 id="log-05-t">FPGA Market-Data Decoder (Verilog)</h2>
@@ -856,7 +969,7 @@ var UNIT_DATA = {
   }
 
   /* ── modules ───────────────────────────────────────────── */
-  var ORDER = ['log-01', 'log-02', 'log-03', 'log-04', 'log-05'];
+  var ORDER = ['about', 'log-01', 'log-02', 'log-03', 'log-04', 'log-05'];
   var current = null, opener = null, pushed = false;
 
   function dlg(id) { return document.getElementById(id); }
@@ -963,10 +1076,18 @@ var UNIT_DATA = {
       b.innerHTML = '<span class="n" aria-hidden="true">' + pad(n) + '</span>';
       b.dataset.n = n;
       var box = UNIT_BOXES[n];
+      var src = document.getElementById('wall-img').getAttribute('src');
+      b.style.backgroundImage = 'url("' + src + '")';
       if (box) {
         b.style.position = 'absolute';
         b.style.left = box.x + '%'; b.style.top = box.y + '%';
         b.style.width = box.w + '%'; b.style.height = box.h + '%';
+        b.style.backgroundSize = (10000 / box.w) + '% ' + (10000 / box.h) + '%';
+        b.style.backgroundPosition = (box.w >= 100 ? 0 : box.x / (100 - box.w) * 100) + '% ' + (box.h >= 100 ? 0 : box.y / (100 - box.h) * 100) + '%';
+      } else {
+        var r = Math.floor((n - 1) / WALL.cols), c = (n - 1) % WALL.cols;
+        b.style.backgroundSize = (WALL.cols * 100) + '% ' + (WALL.rows * 100) + '%';
+        b.style.backgroundPosition = (WALL.cols > 1 ? c / (WALL.cols - 1) * 100 : 0) + '% ' + (WALL.rows > 1 ? r / (WALL.rows - 1) * 100 : 0) + '%';
       }
       buttons.push(b);
       grid.appendChild(b);
@@ -1061,6 +1182,58 @@ var UNIT_DATA = {
 
   buildWall();
   route(true);
+
+  /* ── live readout: scope trace + cycling figures ───────── */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var FIGS = [
+    ['FIG 01', '200+ CUSTOM SYSTEMS BUILT & DELIVERED'],
+    ['FIG 02', '70,000+ GRID ASSETS IN VULNERABILITY ASSESSMENT · AEP'],
+    ['FIG 03', '13 INSTRUMENTATION PROJECTS IN PROGRESS · MARATHON'],
+    ['FIG 04', '700+ MEASUREMENTS LOGGED IN A SINGLE 24-HR BUILD'],
+    ['FIG 05', '5 PCB REVISIONS TO FORMAL DESIGN REVIEW · BOEING'],
+    ['FIG 06', '0 CLEANROOM CONTAMINATION INCIDENTS, 5+ MONTHS']
+  ];
+  var tk = document.getElementById('tick-k'), tv = document.getElementById('tick-v');
+  if (!reduce && tk && tv) {
+    var fi = 0;
+    function typeNext() {
+      fi = (fi + 1) % FIGS.length;
+      tk.textContent = FIGS[fi][0];
+      var txt = FIGS[fi][1], i = 0;
+      tv.textContent = '';
+      (function step() { if (i <= txt.length) { tv.textContent = txt.slice(0, i++); setTimeout(step, 14); } })();
+    }
+    setInterval(typeNext, 3600);
+  }
+
+  var cv = document.getElementById('scope');
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext('2d'), W, H, t = 0, mx = 0.5, my = 0.5, amp = 0.55, freq = 1;
+    function size() { var r = cv.getBoundingClientRect(); W = cv.width = Math.round(r.width * devicePixelRatio); H = cv.height = Math.round(r.height * devicePixelRatio); }
+    size(); window.addEventListener('resize', size);
+    document.addEventListener('mousemove', function (e) {
+      var r = cv.getBoundingClientRect();
+      mx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+      my = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+    });
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      var ta = 0.35 + my * 0.5, tf = 0.8 + mx * 2.2;
+      amp += (ta - amp) * 0.06; freq += (tf - freq) * 0.06;
+      ctx.lineWidth = 1.6 * devicePixelRatio; ctx.strokeStyle = '#D8D8DC'; ctx.beginPath();
+      for (var x = 0; x <= W; x += 2) {
+        var u = x / W;
+        var y = H / 2 + Math.sin(u * Math.PI * 2 * freq * 3 + t) * H * 0.38 * amp
+                     + Math.sin(u * Math.PI * 2 * 11 + t * 2.3) * H * 0.04;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.fillStyle = '#C97A4A'; var px = (t * 0.07 % 1) * W; ctx.fillRect(px - 1, 0, 2 * devicePixelRatio, H);
+      t += 0.045;
+      if (!reduce) requestAnimationFrame(draw);
+    }
+    draw();
+  }
 })();
 </script>
 
