@@ -63,7 +63,7 @@
     line-height:1.55;
     font-size:16.5px;
   }
-  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px}
   .skip{
     position:absolute;left:-9999px;top:0;
     background:var(--ink);color:var(--paper);padding:10px 16px;z-index:50;
@@ -94,10 +94,10 @@
     text-transform:uppercase;
   }
   .subtitle{margin-top:14px;font-size:1.05rem;color:var(--muted);max-width:56ch}
-  .thesis{margin-top:22px;font-size:1.18rem;font-weight:500;max-width:52ch}
+  .thesis{margin-top:22px;font-size:1.28rem;font-weight:500;max-width:46ch;line-height:1.4}
   .thesis em{font-style:normal;color:var(--copper)}
 
-  .portrait{flex:0 0 236px;margin:0;border:1.5px solid var(--ink);background:var(--card);position:relative}
+  .portrait{flex:0 0 280px;margin:0;border:1.5px solid var(--ink);background:var(--card);position:relative}
   .portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
   .portrait figcaption{
     font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--muted);
@@ -115,7 +115,7 @@
   .tl-status::first-letter{color:#4F8F3A}
   .tl-hint{color:var(--copper)}
   /* the board breaks out of the 880px column */
-  .board{position:relative;isolation:isolate;width:min(1180px,100vw - 32px);margin-left:calc(50% - min(1180px,100vw - 32px) / 2);aspect-ratio:var(--w)/var(--h)}
+  .board{position:relative;isolation:isolate;width:min(1280px,100vw - 32px);margin-left:calc(50% - min(1280px,100vw - 32px) / 2);aspect-ratio:var(--w)/var(--h)}
   .route{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
   .rail{list-style:none;margin:0;padding:0}
   .stop{position:absolute;left:var(--x);top:var(--y);width:0;height:0}
@@ -289,6 +289,9 @@
   .mod-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:34px;align-items:start}
   .mod-text p{margin-bottom:14px;max-width:62ch}
   .mod-text em{color:var(--muted)}
+  .mod-text-wide{columns:2;column-gap:40px;max-width:none}
+  .mod-text-wide p{max-width:none}
+  @media (max-width:760px){.mod-text-wide{columns:1}}
   .kv{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     border:1px solid var(--grid);margin:6px 0 18px;
@@ -444,7 +447,7 @@
       <div class="hero-text">
         <h1>Thomas Hong</h1>
         <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of December 2028</p>
-        <p class="thesis">I build hardware and the instruments that measure it: <em>PCBs, sensors, thermal systems.</em></p>
+        <p class="thesis">Hardware from the wafer up to the power grid, and the <em>instruments that keep it honest.</em></p>
       </div>
       <!-- Portrait: drop a photo at img/thomas.jpg (portrait crop, ~800x1000).
            If the file is missing this whole slot removes itself. -->
@@ -776,7 +779,7 @@
       <div><dt>PEAK TEMP REDUCTION</dt><dd>15 TO 25 °C</dd></div>
       <div><dt>ON THIS WALL</dt><dd>50 UNITS</dd></div>
     </dl>
-    <div class="mod-text" style="max-width:none">
+    <div class="mod-text mod-text-wide">
       <p>A PC building business I started before my first engineering class. Over 200 systems designed, assembled, validated, and delivered, plus the diagnostic work when machines come back broken: power-delivery instability, memory-timing failures, thermal throttling that only shows under sustained load. Custom air and liquid cooling loops for thermally constrained builds, cutting peak CPU/GPU temps 15 to 25&nbsp;°C.</p>
       <p>Real customers, real consequences: misdiagnose something and it comes back to me. It's where my troubleshooting instincts come from.</p>
     </div>
@@ -826,8 +829,9 @@
     </dl>
     <div class="mod-grid">
       <div class="mod-text">
-        <p>A heated keyboard needs its element close enough to the touch surface to matter, and off-the-shelf switches have no volume to put one in. So the switch became the design problem. I packaged a thermistor into a custom two-piece housing, seated above the PCB in the switch cavity, with the heat path running up through the stem into a carbon fiber keycap. Carbon fiber conducts poorly through its thickness but well in-plane, so heat arriving at one small stem contact spreads across the whole key instead of pooling.</p>
-        <p>Led a 4-person team through 5 prototype iterations, balancing thermal against ergonomic constraints and cutting build complexity each revision. Delivered a functional prototype and a formal design review to Boeing engineers on schedule. Our trade-off documentation was cited by their engineers as a model for future reviews.</p>
+        <p>IgnisKey started as a Boeing-sponsored student project with a simple brief: a keyboard that warms your fingers. The catch is that a heating element only helps if it sits right under the key, and a normal key switch has nowhere to put one. So the switch itself became the part we had to design.</p>
+        <p>My answer was a two-piece housing with a thermistor seated above the PCB inside the switch cavity, so the heat travels up the stem into a carbon fiber keycap. Carbon fiber is a poor conductor through its thickness but a good one along the fibers, which means heat arriving at one small point on the stem spreads out across the whole key instead of making a hot spot. That one material choice solved both the comfort problem and the burn-risk problem at once.</p>
+        <p>I led a team of four through five prototypes between February and April 2025. Each round we cut something out of the PCB assembly that a failure-mode review had flagged as unnecessary, so builds got faster every revision. We presented a working prototype and a formal design review to Boeing engineers in Ridley Park on schedule, and they pointed to our trade-off documentation as the model for teams after us.</p>
         <div class="spec"><b>Bench:</b> mechanical design (Onshape) · PCB design · thermal packaging · materials selection · design review · team lead of 4</div>
       </div>
       <figure>
