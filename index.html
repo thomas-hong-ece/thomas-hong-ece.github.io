@@ -890,27 +890,73 @@ var UNIT_BOXES = {
      fix:     "How I found the root cause and fixed it",
    },
    ═════════════════════════════════════════════════════════════ */
+/* ── PC wall data ────────────────────────────────────────────
+   UNIT_SERIES: one spec sheet shared by many units (production runs).
+   UNIT_DATA:   one-off builds, or overrides on top of a series / another unit
+                ({ same: 21, ... } copies unit 21 and changes only what you list).
+   Fields: name, year, cpu, gpu, ram, storage, psu, cooling, case, tag,
+           work (build notes), fault + fix (if it came in broken). */
+var UNIT_SERIES = {
+  x99: {
+    units: [2, 7, 10, 11, 15, 16, 18, 23, 25, 26, 29, 33, 34, 35, 36, 37, 38, 40, 41, 44, 45, 46, 47, 48],
+    name: "HC-X99 · budget workstation series",
+    cpu: "Xeon E5-2670 v3 (12C/24T)", gpu: "RX 580 8 GB GDDR5", ram: "16 GB DDR4 ECC", storage: "500 GB SATA SSD",
+    psu: "Thermaltake 500 W 80+ Bronze", cooling: "Air tower", case: "Varies · white units have a spray-painted GPU shroud to match",
+    tag: "SERIES",
+    work: "A repeatable build I could source and assemble at volume: surplus server CPU on a ZSUS X99 board, ECC memory, mid-range GPU. Same parts list every time, so faults were easy to isolate by swapping known-good components."
+  },
+  r3070: {
+    units: [3, 12, 13],
+    name: "Vision 3070 · white mATX build",
+    cpu: "Ryzen 5 5500", gpu: "Gigabyte Vision RTX 3070 8 GB", ram: "16 GB DDR4", storage: "1 TB SSD",
+    psu: "800 W 80+ Gold", case: "Sama 2851 mATX", cooling: "Air", tag: "CLEAN BUILD",
+    work: "Machinist white B450M board, all-white parts list. Built three of these for three different clients."
+  },
+  i10600: {
+    units: [24, 39],
+    name: "10600 / 1080 gaming build",
+    cpu: "Core i5-10600", gpu: "GTX 1080", ram: "16 GB DDR4", psu: "600 W 80+ Gold", tag: "CLEAN BUILD"
+  },
+  vega: {
+    units: [32, 50],
+    name: "3700X / Vega 64 build",
+    cpu: "Ryzen 7 3700X", gpu: "RX Vega 64", ram: "32 GB DDR4", storage: "1 TB SSD", psu: "800 W 80+ Gold", tag: "CLEAN BUILD"
+  }
+};
+
 var UNIT_DATA = {
-  /* ▼ EXAMPLE ENTRIES · the specs below are made up to show the format.
-       Replace with your real builds, then delete this note. */
-  1: {
-    name: "EXAMPLE · Client gaming build",
-    year: "2023",
-    cpu: "Ryzen 7 7800X3D", gpu: "RTX 4070 Super", ram: "32 GB DDR5-6000", storage: "2 TB NVMe",
-    psu: "850 W 80+ Gold", cooling: "360 mm AIO", case: "Lian Li O11",
-    tag: "THERMAL",
-    fault: "Hard throttling 20 minutes into any game. Clock speeds dropped by a third under sustained load.",
-    fix: "Logged temps vs. clocks and found the AIO pump running at idle RPM on a fan header. Moved it to the pump header, confirmed 100% duty cycle, peak CPU temp dropped 22 °C."
-  },
-  2: {
-    name: "EXAMPLE · Workstation refresh",
-    year: "2024",
-    cpu: "Core i7-14700K", gpu: "RTX 4060 Ti", ram: "64 GB DDR5-5600", storage: "1 TB + 4 TB NVMe",
-    psu: "750 W 80+ Gold", cooling: "Air tower",
-    tag: "MEMORY",
-    fault: "Random reboots with no error, roughly once a day.",
-    fix: "Memtest passed at stock but failed with XMP on. Dropped the kit from 5600 to 5200 and bumped VDD slightly; 48 hours of stress testing clean, no reboots since."
-  },
+  1:  { name: "3600 / 5700 XT gaming build", cpu: "Ryzen 5 3600", gpu: "RX 5700 XT", ram: "16 GB DDR4", storage: "1 TB SSD", cooling: "ID-Cooling SE-214XT", tag: "CLEAN BUILD" },
+  4:  { name: "Dell OEM rebuild", cpu: "Core i7-6700", gpu: "GTX 1060", ram: "16 GB DDR4", storage: "500 GB SSD", case: "Dell OEM board and chassis", tag: "REFURB",
+        work: "Came in as a used office PC. Wiped and reformatted, flashed the OEM BIOS forward several years of revisions, added the GPU." },
+  5:  { name: "3600 / 1080 build", cpu: "Ryzen 5 3600", gpu: "GTX 1080 · custom backplate", ram: "16 GB DDR4", storage: "1 TB SSD", psu: "800 W 80+ Gold", case: "B450 platform", tag: "COSMETIC",
+        work: "The card shipped with a bare PCB on the back, so I cut and fitted a custom backplate for it." },
+  6:  { name: "3700X / 3070 Uni Fan build", cpu: "Ryzen 7 3700X", gpu: "Gigabyte Vision RTX 3070", ram: "32 GB DDR4", psu: "800 W 80+ Titanium", cooling: "Lian Li Uni Fans", case: "B550 platform", tag: "CLEAN BUILD",
+        work: "First build with Uni Fans: the magnetic daisy-chain cuts the fan cabling down to one run per bank." },
+  8:  { name: "11700KF / 2060 vertical-mount build", cpu: "Core i7-11700KF", gpu: "RTX 2060 · vertical mount", ram: "32 GB DDR4", storage: "1 TB SSD", psu: "600 W", case: "Z490 platform", tag: "GPU",
+        work: "Vertical GPU on a riser cable. Took several rounds of re-seating and bracket adjustment before the card sat square and the riser stopped dropping to PCIe 3.0." },
+  9:  { name: "3600 / 6650 XT White Legend", cpu: "Ryzen 5 3600", gpu: "RX 6650 XT White Legend · vertical mount", ram: "16 GB DDR4", storage: "2 TB SSD", psu: "EVGA 800 W 80+ Titanium", case: "B550 platform", tag: "CUSTOM",
+        work: "Lian Li riser for the vertical GPU, plus a secondary display mounted on the rear of the case that needed its own custom wiring harness." },
+  17: { name: "10400 / 1070 build", cpu: "Core i5-10400", gpu: "GTX 1070", ram: "16 GB DDR4", storage: "500 GB SSD", psu: "600 W 80+ Bronze", tag: "COSMETIC",
+        fault: "Case arrived from the courier with dents on two panels.", fix: "Pulled the dents, sanded, primed and repainted the panels before assembly." },
+  19: { name: "2600 / 1080 build", cpu: "Ryzen 5 2600", gpu: "GTX 1080", ram: "16 GB DDR4", storage: "500 GB SSD", psu: "600 W 80+ Bronze", tag: "CLEAN BUILD" },
+  20: { name: "OEM recase · custom paint", cpu: "Core i5-6500", gpu: "GTX 1650", ram: "16 GB DDR4", storage: "500 GB SSD", tag: "COSMETIC",
+        work: "Full case spray-painted white over the original OEM design, with custom graphics added on top." },
+  21: { name: "HP Compaq recase", cpu: "Core i5-2400", gpu: "GTX 1050 · painted white to match", ram: "16 GB DDR3", storage: "256 GB SSD", psu: "500 W", case: "Dell OEM board in a new case", tag: "RECASE",
+        work: "OEM board into an aftermarket case: remapped the front-panel power button to the proprietary header, pulled the cooler standoffs from the old chassis, and adapted the PSU connector for a standard ATX supply." },
+  22: { name: "8700 / 1660 Super recovery", cpu: "Core i7-8700", gpu: "GTX 1660 Super", ram: "32 GB DDR4", storage: "1 TB SSD", psu: "800 W 80+ Gold", tag: "REFURB",
+        work: "Recovered from a surplus lot. Full teardown and clean before it was fit to sell." },
+  27: { name: "Recovered office PC", cpu: "Core i5-3400", gpu: "RX 560", ram: "16 GB DDR3", storage: "500 GB SSD", psu: "500 W", tag: "REFURB",
+        fault: "Lot recovery, heavily soiled, case fans seized.", fix: "Deep clean, replaced every fan, and added LED lighting so it didn't look like an office box." },
+  28: { name: "2700X / 2070 build", cpu: "Ryzen 7 2700X", gpu: "Zotac RTX 2070 · spray-painted", ram: "16 GB DDR4", case: "B450 ATX", tag: "GPU",
+        fault: "GPU fan intermittently stopped under load.", fix: "Traced it to a cracked solder joint on the fan header; reflowed the joint and the fan held at full duty through a stress run." },
+  30: { same: 21, name: "HP Compaq recase · black", gpu: "GTX 1050", work: "Same recase job as unit 21 in black: remapped power button, removed old cooler standoffs, PSU adapter." },
+  31: { name: "4790 / 1060 hard-tube loop", cpu: "Core i7-4790", gpu: "GTX 1060 · water block", ram: "16 GB DDR3", storage: "500 GB SSD", psu: "500 W 80+ Gold", cooling: "Hard-tube custom loop", tag: "LOOP",
+        work: "First hard-tubing build. Drained the old coolant, flushed the loop, and refilled with distilled water." },
+  35: { work: "Same series spec, but the case suited a vertical GPU so it got a riser cable and vertical mount." },
+  42: { name: "3700X / 2070 Super · AIO with display", cpu: "Ryzen 7 3700X", gpu: "RTX 2070 Super", ram: "32 GB DDR4", storage: "1 TB SSD", psu: "650 W 80+ Gold", cooling: "AIO with LCD display", tag: "GPU",
+        fault: "GPU dead on arrival; AIO display needed calibration.", fix: "Traced a short on the GPU board, resoldered the damaged component, card came back to life. Calibrated the cooler's display separately." },
+  43: { name: "3700X / 3070 build", cpu: "Ryzen 7 3700X", gpu: "RTX 3070", ram: "32 GB DDR4", psu: "800 W", case: "B550 ATX", tag: "CLEAN BUILD" },
+  49: { same: 14, tag: "CPU", fault: "Bent CPU socket pins from shipping.", fix: "Straightened the pins under magnification, then ran a full stress test before delivery." }
 };
 
 (function () {
@@ -1011,7 +1057,19 @@ var UNIT_DATA = {
   var FIELDS = [['cpu', 'CPU'], ['gpu', 'GPU'], ['ram', 'MEMORY'], ['storage', 'STORAGE'], ['psu', 'PSU'], ['cooling', 'COOLING'], ['case', 'CASE']];
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
-  function data(n) { return UNIT_DATA[n] || null; }
+  var SERIES_OF = {};
+  Object.keys(UNIT_SERIES).forEach(function (k) { UNIT_SERIES[k].units.forEach(function (u) { SERIES_OF[u] = k; }); });
+  function merge(a, b) { var o = {}; Object.keys(a || {}).forEach(function (k) { o[k] = a[k]; }); Object.keys(b || {}).forEach(function (k) { if (k !== 'same' && k !== 'units') o[k] = b[k]; }); return o; }
+  function data(n, depth) {
+    depth = depth || 0;
+    var own = UNIT_DATA[n], base = null;
+    if (own && own.same && depth < 3) base = data(own.same, depth + 1);
+    else if (SERIES_OF[n]) { base = merge(UNIT_SERIES[SERIES_OF[n]], {}); base._series = SERIES_OF[n]; }
+    if (!own && !base) return null;
+    var d = merge(base, own);
+    if (own && own.same) d._same = own.same;
+    return d;
+  }
 
   function buildWall() {
     grid.style.gridTemplateColumns = 'repeat(' + WALL.cols + ', 1fr)';
@@ -1112,13 +1170,17 @@ var UNIT_DATA = {
       var h = el('h4', null, d.name || ('Unit ' + pad(n)));
       if (d.tag) h.appendChild(el('span', 'tag' + (/clean/i.test(d.tag) ? ' clean' : ''), d.tag.toUpperCase()));
       body.appendChild(h);
-      body.appendChild(el('div', 'meta', 'UNIT ' + pad(n) + (d.year ? ' · BUILT ' + d.year : '')));
+      var meta = 'UNIT ' + pad(n) + (d.year ? ' · BUILT ' + d.year : '');
+      if (d._series) { var su = UNIT_SERIES[d._series].units; meta += ' · SERIES, ' + (su.indexOf(n) + 1) + ' OF ' + su.length; }
+      if (d._same) meta += ' · SAME SPEC AS UNIT ' + pad(d._same);
+      body.appendChild(el('div', 'meta', meta));
       var rows = FIELDS.filter(function (f) { return d[f[0]]; });
       if (rows.length) {
         var t = el('table');
         rows.forEach(function (f) { var tr = el('tr'); tr.appendChild(el('th', null, f[1])); tr.appendChild(el('td', null, d[f[0]])); t.appendChild(tr); });
         body.appendChild(t);
       }
+      if (d.work) { var w = el('div', 'fault fix'); w.appendChild(el('div', 'lbl', 'WORK DONE')); w.appendChild(el('p', null, d.work)); body.appendChild(w); }
       if (d.fault) { var a = el('div', 'fault'); a.appendChild(el('div', 'lbl', 'FAULT REPORTED')); a.appendChild(el('p', null, d.fault)); body.appendChild(a); }
       if (d.fix) { var f = el('div', 'fault fix'); f.appendChild(el('div', 'lbl', 'ROOT CAUSE & FIX')); f.appendChild(el('p', null, d.fix)); body.appendChild(f); }
     }
@@ -1127,7 +1189,7 @@ var UNIT_DATA = {
 
   function buildFilters() {
     var tags = {};
-    Object.keys(UNIT_DATA).forEach(function (k) { var t = UNIT_DATA[k].tag; if (t) tags[t.toUpperCase()] = (tags[t.toUpperCase()] || 0) + 1; });
+    for (var u = 1; u <= N; u++) { var dd = data(u); if (dd && dd.tag) tags[dd.tag.toUpperCase()] = (tags[dd.tag.toUpperCase()] || 0) + 1; }
     var keys = Object.keys(tags);
     if (!keys.length) return;
     filtersEl.hidden = false;
