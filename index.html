@@ -29,7 +29,7 @@
 
   REMAINING TO-DOS (carried over)
   1. Resume PDF: add site URL to header before upload.
-  2. Swap LOG 03 build-photos link for the MakeOHI/O post URL.
+  2. Swap LOG 02 build-photos link for the MakeOHI/O post URL.
   3. FIELD NOTE mockup uses placeholder data.
   4. LOG 01 custom-loop hero photo (img/custom-loop.jpg) optional.
   ─────────────────────────────────────────────────────────────
@@ -85,7 +85,7 @@
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
     margin-bottom:20px;
   }
-  .hero-row{display:flex;gap:28px;align-items:flex-end;justify-content:space-between}
+  .hero-row{display:flex;gap:36px;align-items:center;justify-content:space-between}
   .hero-text{min-width:0}
   h1{
     font-family:"Archivo",sans-serif;font-weight:900;
@@ -97,7 +97,7 @@
   .thesis{margin-top:22px;font-size:1.28rem;font-weight:500;max-width:46ch;line-height:1.4}
   .thesis em{font-style:normal;color:var(--copper)}
 
-  .portrait{flex:0 0 280px;margin:0;border:1.5px solid var(--ink);background:var(--card);position:relative}
+  .portrait{flex:0 0 240px;margin:0;border:1.5px solid var(--ink);background:var(--card);position:relative}
   .portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
   .portrait figcaption{
     font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--muted);
@@ -289,9 +289,8 @@
   .mod-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:34px;align-items:start}
   .mod-text p{margin-bottom:14px;max-width:62ch}
   .mod-text em{color:var(--muted)}
-  .mod-text-wide{columns:2;column-gap:40px;max-width:none}
-  .mod-text-wide p{max-width:none}
-  @media (max-width:760px){.mod-text-wide{columns:1}}
+  .mod-text-wide{max-width:none}
+  .mod-text-wide p{max-width:80ch}
   .kv{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     border:1px solid var(--grid);margin:6px 0 18px;
@@ -447,7 +446,7 @@
       <div class="hero-text">
         <h1>Thomas Hong</h1>
         <p class="subtitle">Electrical &amp; Computer Engineering, The Ohio State University · Class of December 2028</p>
-        <p class="thesis">Hardware from the wafer up to the power grid, and the <em>instruments that keep it honest.</em></p>
+        <p class="thesis">I build hardware and the instruments that measure it: <em>PCBs, sensors, thermal systems.</em></p>
       </div>
       <!-- Portrait: drop a photo at img/thomas.jpg (portrait crop, ~800x1000).
            If the file is missing this whole slot removes itself. -->
@@ -494,7 +493,7 @@
       </li>
       <li class="stop up " style="--x:31.61%;--y:44.69%">
         <span class="dot" aria-hidden="true"></span><span class="stem" aria-hidden="true"></span><span class="when">2025</span>
-        <button class="pola" type="button" data-open="log-02" aria-haspopup="dialog">
+        <button class="pola" type="button" data-open="log-03" aria-haspopup="dialog">
           <span class="ptitle">Boeing · IgnisKey</span>
           <span class="pframe"><img src="img/timeline/boeing.jpg" alt="IgnisKey assembly drawing in Onshape" loading="lazy"></span>
           <span class="pcap">Philadelphia, PA</span>
@@ -552,24 +551,24 @@
 
       <button class="card" type="button" data-open="log-02" aria-haspopup="dialog">
         <span>
-          <span class="log-id" style="display:block">LOG 02 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></span>
-          <h3>IgnisKey: Custom Heated Key Switch</h3>
-          <p>Boeing-sponsored, Ridley Park PA. Packaged a heater into a key switch that had no room for one; led 4 people through 5 revisions.</p>
-          <span class="chips"><span class="chip">5 REVS</span><span class="chip">TEAM LEAD OF 4</span><span class="chip">ONSHAPE · PCB</span></span>
-          <span class="card-open">OPEN MODULE</span>
-        </span>
-        <span class="thumb"><img src="img/timeline/boeing.jpg" alt="" loading="lazy"></span>
-      </button>
-
-      <button class="card" type="button" data-open="log-03" aria-haspopup="dialog">
-        <span>
-          <span class="log-id" style="display:block">LOG 03 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></span>
+          <span class="log-id" style="display:block">LOG 02 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></span>
           <h3>Dynamic Transmission Line Monitor</h3>
           <p>24-hour makeathon build: an ESP32 watching a heated wire sag in real time, checked against IEEE thermal models.</p>
           <span class="chips"><span class="chip">700+ PTS LOGGED</span><span class="chip">WITHIN 5% OF IEEE</span><span class="chip">ESP32 · LiDAR</span></span>
           <span class="card-open">OPEN MODULE</span>
         </span>
         <span class="thumb"><img src="img/line-monitor.jpg" alt="" loading="lazy"></span>
+      </button>
+
+      <button class="card" type="button" data-open="log-03" aria-haspopup="dialog">
+        <span>
+          <span class="log-id" style="display:block">LOG 03 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></span>
+          <h3>IgnisKey: Custom Heated Key Switch</h3>
+          <p>Boeing-sponsored, Ridley Park PA. Packaged a heater into a key switch that had no room for one; led 4 people through 5 revisions.</p>
+          <span class="chips"><span class="chip">5 REVS</span><span class="chip">TEAM LEAD OF 4</span><span class="chip">ONSHAPE · PCB</span></span>
+          <span class="card-open">OPEN MODULE</span>
+        </span>
+        <span class="thumb"><img src="img/timeline/boeing.jpg" alt="" loading="lazy"></span>
       </button>
 
       <button class="card" type="button" data-open="log-04" aria-haspopup="dialog">
@@ -612,6 +611,7 @@
       <div class="bench-head">SOFTWARE &amp; TOOLS</div>
       <ul class="bench">
         <li>Python <span class="cal">ADVANCED</span></li>
+        <li>HTML · CSS · JavaScript <span class="cal">THIS SITE, HAND-BUILT</span></li>
         <li>C / C++ <span class="cal">INTERMEDIATE</span></li>
         <li>MATLAB <span class="cal">INTERMEDIATE</span></li>
         <li>SQL <span class="cal">INTERMEDIATE</span></li>
@@ -654,11 +654,11 @@
   <div class="mod-foot"><button class="mod-nav" type="button" data-close>← BACK TO TIMELINE</button></div>
 </dialog>
 
-<dialog class="module" id="log-03" aria-labelledby="log-03-t">
-  <div class="mod-bar"><span class="bar-title">MODULE 3 / 4 · LOG 03</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+<dialog class="module" id="log-02" aria-labelledby="log-02-t">
+  <div class="mod-bar"><span class="bar-title">MODULE 2 / 4 · LOG 02</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
   <div class="mod-body">
-    <div class="log-id">LOG 03 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></div>
-    <h2 id="log-03-t">Dynamic Transmission Line Monitor</h2>
+    <div class="log-id">LOG 02 · FIELD TEST · <span class="status">2ND PLACE, AEP DYNAMIC GRID CHALLENGE</span></div>
+    <h2 id="log-02-t">Dynamic Transmission Line Monitor</h2>
     <dl class="kv">
       <div><dt>BUILD WINDOW</dt><dd>24 HR</dd></div>
       <div><dt>MEASUREMENTS</dt><dd>700+</dd></div>
@@ -676,7 +676,7 @@
         <a href="img/line-monitor.jpg" target="_blank" rel="noopener">
           <span class="zoomable"><img class="photo" src="img/line-monitor.jpg" alt="Annotated transmission line monitor prototype showing nichrome wire, temperature sensor, LiDAR distance sensor, LCD display, voltage regulator, and fan wind simulator" loading="lazy"></span>
         </a>
-        <figcaption class="fig-caption">FIG. 03.1 · INSTRUMENTED TEST RIG, ANNOTATED</figcaption>
+        <figcaption class="fig-caption">FIG. 02.1 · INSTRUMENTED TEST RIG, ANNOTATED</figcaption>
       </figure>
     </div>
   </div>
@@ -816,11 +816,11 @@
   <div class="mod-foot"><button class="mod-nav" type="button" data-go="prev">← PREV</button><button class="mod-nav" type="button" data-go="next">NEXT →</button></div>
 </dialog>
 
-<dialog class="module" id="log-02" aria-labelledby="log-02-t">
-  <div class="mod-bar"><span class="bar-title">MODULE 2 / 4 · LOG 02</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
+<dialog class="module" id="log-03" aria-labelledby="log-03-t">
+  <div class="mod-bar"><span class="bar-title">MODULE 3 / 4 · LOG 03</span><button class="mod-close" type="button" data-close>CLOSE ✕</button></div>
   <div class="mod-body">
-    <div class="log-id">LOG 02 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></div>
-    <h2 id="log-02-t">IgnisKey: Custom Heated Key Switch · Boeing-Sponsored Internship</h2>
+    <div class="log-id">LOG 03 · DESIGN REVIEW · <span class="status">CITED AS MODEL FOR FUTURE REVIEWS</span></div>
+    <h2 id="log-03-t">IgnisKey: Custom Heated Key Switch · Boeing-Sponsored Internship</h2>
     <dl class="kv">
       <div><dt>WHEN · WHERE</dt><dd>FEB TO APR 2025 · RIDLEY PARK, PA</dd></div>
       <div><dt>PROTOTYPE ITERATIONS</dt><dd>5 REVS</dd></div>
@@ -838,7 +838,7 @@
         <a href="img/igniskey-drawing.png" target="_blank" rel="noopener">
           <span class="zoomable"><img class="photo" src="img/igniskey-drawing.png" alt="Assembly drawing IGK-001, IgnisKey thermal key assembly: isometric view with ballooned callouts beside a section view, plus a parts list giving material for each of the seven components" loading="lazy" width="2200" height="1375"></span>
         </a>
-        <figcaption class="fig-caption">FIG. 02.1 · IGK-001 · ISOMETRIC &amp; SECTION VIEWS</figcaption>
+        <figcaption class="fig-caption">FIG. 03.1 · IGK-001 · ISOMETRIC &amp; SECTION VIEWS</figcaption>
       </figure>
     </div>
   </div>
@@ -967,7 +967,7 @@ var UNIT_DATA = {
   /* ── sticky nav compaction ─────────────────────────────── */
 
   /* ── modules ───────────────────────────────────────────── */
-  var ORDER = ['log-01', 'log-02', 'log-03', 'log-04'];
+  var ORDER = ['log-01', 'log-03', 'log-02', 'log-04'];
   var JOBS = ['job-ntw', 'job-aep', 'job-mpc'];
   var ALL = ORDER.concat(JOBS);
   var current = null, opener = null, pushed = false;
