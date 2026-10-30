@@ -77,7 +77,7 @@
   .mono{font-family:"IBM Plex Mono",monospace}
 
   /* ── header / datasheet hero ─────────────────────────── */
-  header{padding:48px 0 8px}
+  header{padding:48px 0 40px}
   .eyebrow a{color:inherit;text-decoration:none} .eyebrow a:hover{color:var(--copper)}
   .eyebrow{
     font-family:"IBM Plex Mono",monospace;
@@ -86,7 +86,7 @@
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
     margin-bottom:20px;
   }
-  .hero-row{display:flex;gap:36px;align-items:center;justify-content:space-between}
+  .hero-row{display:flex;gap:36px;align-items:flex-start;justify-content:space-between}
   .hero-text{min-width:0}
   h1{
     font-family:"Archivo",sans-serif;font-weight:900;
@@ -103,7 +103,7 @@
   .cta a:hover{color:var(--ink)}
   .thesis em{font-style:normal;color:var(--copper)}
 
-  .portrait{flex:0 0 240px;margin:0;border:1.5px solid var(--ink);background:var(--card);position:relative}
+  .portrait{flex:0 0 240px;margin:calc(clamp(2.6rem,7vw,4.4rem) * .17) 0 0;border:1.5px solid var(--ink);background:var(--card);position:relative}
   .portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
   .portrait figcaption{
     font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--muted);
@@ -111,6 +111,7 @@
   }
   @media (max-width:640px){
     .hero-row{flex-direction:column;align-items:flex-start;gap:20px}
+    .portrait{margin-top:0}
     .portrait{flex-basis:auto;width:200px}
   }
 
